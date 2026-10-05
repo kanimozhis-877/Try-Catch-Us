@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFE LINK | QR Access</title>
+    <link rel="stylesheet" href="../css/qr.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">♡</div>
+            <div>
+                <h2>LIFE LINK</h2>
+                <p>HEALTHCARE CONNECT</p>
+            </div>
+        </div>
+
+        <div class="portal-title">DOCTOR PORTAL</div>
+
+        <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="patients.html" class="nav-item">
+            <span class="nav-icon">♟</span>
+            <span>Patients</span>
+        </a>
+
+        <a href="reports.html" class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span>Reports</span>
+        </a>
+
+        <a href="analysis.html" class="nav-item">
+            <span class="nav-icon">◉</span>
+            <span>Report Analysis</span>
+        </a>
+
+        <a href="qr.html" class="nav-item active">
+            <span class="nav-icon">▣</span>
+            <span>QR Access</span>
+        </a>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <div class="page-header">
+            <div>
+                <h1>QR Access</h1>
+                <p>Generate a secure QR code for patient record access.</p>
+            </div>
+        </div>
+
+
+        <!-- QR Generator Section -->
+        <section class="qr-section">
+
+            <!-- Generator Card -->
+            <div class="generator-card">
+
+                <h2>Generate Patient QR</h2>
+                <p class="card-description">
+                    Select a patient and create a QR code for quick record access.
+                </p>
+
+                <div class="form-group">
+                    <label for="patientName">Patient Name</label>
+
+                    <select id="patientName">
+                        <option value="">Select Patient</option>
+                        <option value="Arun Kumar">Arun Kumar - CL001</option>
+                        <option value="Priya Sharma">Priya Sharma - CL002</option>
+                        <option value="Rahul Mohan">Rahul Mohan - CL003</option>
+                        <option value="Sneha Krishnan">Sneha Krishnan - CL004</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="accessDuration">Access Duration</label>
+
+                    <select id="accessDuration">
+                        <option value="15">15 Minutes</option>
+                        <option value="30">30 Minutes</option>
+                        <option value="60">1 Hour</option>
+                        <option value="120">2 Hours</option>
+                    </select>
+                </div>
+
+
+                <button class="generate-btn" onclick="generateQR()">
+                    Generate QR Code
+                </button>
+
+            </div>
+
+
+            <!-- QR Preview Card -->
+            <div class="qr-card">
+
+                <div class="qr-title">
+                    <h2>QR Code</h2>
+                    <span id="qrStatus">Ready</span>
+                </div>
+
+                <div class="qr-preview" id="qrPreview">
+
+                    <div class="qr-placeholder">
+                        <div class="qr-pattern">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <p>Select a patient to generate QR</p>
+
+                </div>
+
+                <div class="qr-info">
+                    <p><strong>Patient:</strong> <span id="selectedPatient">Not selected</span></p>
+                    <p><strong>Access:</strong> <span id="selectedDuration">Not generated</span></p>
+                </div>
+
+                <div class="qr-buttons">
+
+                    <button class="download-btn" onclick="downloadQR()">
+                        Download QR
+                    </button>
+
+                    <button class="clear-btn" onclick="clearQR()">
+                        Clear
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Information Cards -->
+        <section class="info-section">
+
+            <div class="info-card">
+                <div class="info-icon">✓</div>
+                <div>
+                    <h3>Quick Access</h3>
+                    <p>
+                        QR codes provide quick access to the selected patient's records.
+                    </p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">◷</div>
+                <div>
+                    <h3>Time Limited</h3>
+                    <p>
+                        Access duration can be selected before generating the QR code.
+                    </p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">▣</div>
+                <div>
+                    <h3>Easy to Scan</h3>
+                    <p>
+                        The generated QR can be scanned for quick patient record access.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function generateQR() {
+
+            const patient = document.getElementById("patientName").value;
+            const duration = document.getElementById("accessDuration").value;
+
+            if (patient === "") {
+                alert("Please select a patient.");
+                return;
+            }
+
+            document.getElementById("selectedPatient").textContent = patient;
+            document.getElementById("selectedDuration").textContent =
+                duration + " Minutes";
+
+            document.getElementById("qrStatus").textContent = "Generated";
+
+            document.getElementById("qrPreview").innerHTML = `
+                <div class="generated-qr">
+
+                    <div class="qr-box">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+
+                        <div class="qr-dots">
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+
+                    <p>Scan to access patient records</p>
+
+                </div>
+            `;
+        }
+
+
+        function clearQR() {
+
+            document.getElementById("patientName").value = "";
+
+            document.getElementById("selectedPatient").textContent =
+                "Not selected";
+
+            document.getElementById("selectedDuration").textContent =
+                "Not generated";
+
+            document.getElementById("qrStatus").textContent = "Ready";
+
+            document.getElementById("qrPreview").innerHTML = `
+                <div class="qr-placeholder">
+                    <div class="qr-pattern">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+
+                <p>Select a patient to generate QR</p>
+            `;
+        }
+
+
+        function downloadQR() {
+
+            const patient = document.getElementById("patientName").value;
+
+            if (patient === "") {
+                alert("Please generate a QR code first.");
+                return;
+            }
+
+            alert("QR download will be connected to the backend.");
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LIFE LINK | Patient Login</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #102a43;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(0, 190, 255, 0.25),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(52, 87, 220, 0.22),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #e4f7ff,
+                    #f7fbff 50%,
+                    #e9f0ff
+                );
+        }
+
+        .page {
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 35px 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 1000px;
+            min-height: 590px;
+
+            display: flex;
+
+            background: #ffffff;
+
+            border-radius: 30px;
+            overflow: hidden;
+
+            border: 1px solid #c9e2ef;
+
+            box-shadow:
+                0 25px 70px rgba(0, 75, 125, 0.18);
+        }
+
+        /* ================= LEFT PANEL ================= */
+
+        .welcome-panel {
+            width: 46%;
+
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 50px 40px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #063b68 0%,
+                    #075b91 48%,
+                    #008fc4 100%
+                );
+
+            color: white;
+        }
+
+        .welcome-panel::before {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            background: rgba(0, 215, 255, 0.14);
+
+            top: -120px;
+            right: -110px;
+        }
+
+        .welcome-panel::after {
+            content: "";
+
+            position: absolute;
+
+            width: 240px;
+            height: 240px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.07);
+
+            bottom: -110px;
+            left: -90px;
+        }
+
+        /* ================= LOGO ================= */
+
+        .logo-box {
+            width: 76px;
+            height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 22px;
+
+            background: rgba(255, 255, 255, 0.15);
+
+            border: 1px solid rgba(255, 255, 255, 0.30);
+
+            margin-bottom: 22px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-box svg {
+            width: 52px;
+            height: 52px;
+        }
+
+        .welcome-panel h1 {
+            font-size: 34px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 10px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-panel h1 span {
+            color: #66e2ff;
+        }
+
+        .welcome-title {
+            font-size: 22px;
+
+            font-weight: 700;
+
+            margin-bottom: 14px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-text {
+            max-width: 330px;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            color: rgba(255, 255, 255, 0.82);
+
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ================= PATIENT VISUAL ================= */
+
+        .patient-symbol {
+            width: 115px;
+            height: 115px;
+
+            margin-top: 30px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255, 255, 255, 0.11);
+
+            border: 1px solid rgba(255, 255, 255, 0.22);
+
+            position: relative;
+            z-index: 2;
+
+            font-size: 52px;
+
+            box-shadow:
+                0 12px 30px rgba(0, 40, 80, 0.15);
+        }
+
+        /* ================= RIGHT LOGIN ================= */
+
+        .login-panel {
+            width: 54%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            padding: 55px 65px;
+
+            background: #ffffff;
+        }
+
+        .back-link {
+            display: inline-block;
+
+            color: #168fc0;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            margin-bottom: 28px;
+
+            transition: 0.2s;
+        }
+
+        .back-link:hover {
+            color: #005f91;
+        }
+
+        .login-panel h2 {
+            font-size: 32px;
+
+            color: #102f4c;
+
+            margin-bottom: 8px;
+        }
+
+        .login-subtitle {
+            color: #71879a;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            margin-bottom: 32px;
+        }
+
+        /* ================= FORM ================= */
+
+        .form-group {
+            margin-bottom: 21px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            color: #31536d;
+
+            margin-bottom: 8px;
+        }
+
+        .input-box {
+            width: 100%;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+
+            border: 1px solid #cbdfe9;
+
+            border-radius: 12px;
+
+            background: #fafdff;
+
+            transition: 0.2s;
+        }
+
+        .input-box:focus-within {
+            border-color: #079bcf;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 0 4px rgba(7, 155, 207, 0.10);
+        }
+
+        .input-icon {
+            width: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+
+            color: #078fbe;
+        }
+
+        .input-box input {
+            flex: 1;
+
+            height: 100%;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            padding: 0 14px 0 0;
+
+            color: #173d59;
+
+            font-size: 14px;
+        }
+
+        .input-box input::placeholder {
+            color: #9aabb7;
+        }
+
+        /* ================= OPTIONS ================= */
+
+        .form-options {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin-top: 4px;
+            margin-bottom: 25px;
+        }
+
+        .remember {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            font-size: 12px;
+
+            color: #718596;
+        }
+
+        .remember input {
+            accent-color: #078fc2;
+        }
+
+        .forgot {
+            color: #078fc2;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+        /* ================= LOGIN BUTTON ================= */
+
+        .login-button {
+            width: 100%;
+            height: 52px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #007fbd,
+                    #00a8dc
+                );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.2px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px rgba(0, 137, 190, 0.25);
+
+            transition: 0.25s;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 14px 30px rgba(0, 137, 190, 0.32);
+        }
+
+        /* ================= SECURITY ================= */
+
+        .security-note {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 7px;
+
+            margin-top: 22px;
+
+            font-size: 11px;
+
+            color: #8193a0;
+        }
+
+        .security-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #08a88c;
+
+            box-shadow:
+                0 0 7px rgba(8, 168, 140, 0.5);
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .login-container {
+                max-width: 520px;
+
+                flex-direction: column;
+
+                min-height: auto;
+            }
+
+            .welcome-panel {
+                width: 100%;
+
+                min-height: 300px;
+
+                padding: 35px 25px;
+            }
+
+            .patient-symbol {
+                width: 90px;
+                height: 90px;
+
+                font-size: 42px;
+
+                margin-top: 22px;
+            }
+
+            .login-panel {
+                width: 100%;
+
+                padding: 40px 35px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .page {
+                padding: 20px 14px;
+            }
+
+            .login-container {
+                border-radius: 22px;
+            }
+
+            .welcome-panel {
+                min-height: 270px;
+            }
+
+            .welcome-panel h1 {
+                font-size: 28px;
+            }
+
+            .welcome-title {
+                font-size: 19px;
+            }
+
+            .welcome-text {
+                font-size: 13px;
+            }
+
+            .patient-symbol {
+                display: none;
+            }
+
+            .login-panel {
+                padding: 32px 24px;
+            }
+
+            .login-panel h2 {
+                font-size: 27px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <div class="login-container">
+
+
+        <!-- ================= LEFT SIDE ================= -->
+
+        <section class="welcome-panel">
+
+
+            <div class="logo-box">
+
+                <svg viewBox="0 0 60 60">
+
+                    <!-- LIFE LINK HEART -->
+
+                    <path
+                        d="M30 50
+                           C26 46 10 37 10 22
+                           C10 13 16 8 23 8
+                           C27 8 30 11 30 15
+                           C30 11 33 8 37 8
+                           C44 8 50 13 50 22
+                           C50 37 34 46 30 50Z"
+
+                        fill="none"
+
+                        stroke="white"
+
+                        stroke-width="3.5"
+                    />
+
+                    <!-- ECG -->
+
+                    <polyline
+                        points="
+                        12,27
+                        21,27
+                        25,22
+                        29,35
+                        34,16
+                        38,27
+                        48,27"
+
+                        fill="none"
+
+                        stroke="#66e2ff"
+
+                        stroke-width="3"
+
+                        stroke-linecap="round"
+
+                        stroke-linejoin="round"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <h1>
+                LIFE <span>LINK</span>
+            </h1>
+
+
+            <div class="welcome-title">
+                Patient Portal
+            </div>
+
+
+            <p class="welcome-text">
+
+                Keep your medical reports, health information
+                and care journey organized in one secure place.
+
+            </p>
+
+
+            <!-- PATIENT VISUAL -->
+
+            <div class="patient-symbol">
+                ❤️
+            </div>
+
+
+        </section>
+
+
+        <!-- ================= RIGHT SIDE ================= -->
+
+        <section class="login-panel">
+
+
+            <a
+                href="index.html"
+                class="back-link"
+            >
+                ← Back to Home
+            </a>
+
+
+            <h2>
+                Welcome Back
+            </h2>
+
+
+            <p class="login-subtitle">
+
+                Sign in to securely access your
+                LIFE LINK patient dashboard.
+
+            </p>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label>
+                    Email Address
+                </label>
+
+
+                <div class="input-box">
+
+                    <div class="input-icon">
+                        ✉
+                    </div>
+
+
+                    <input
+                        type="email"
+                        id="patientEmail"
+                        placeholder="Enter your email"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label>
+                    Password
+                </label>
+
+
+                <div class="input-box">
+
+                    <div class="input-icon">
+                        🔒
+                    </div>
+
+
+                    <input
+                        type="password"
+                        id="patientPassword"
+                        placeholder="Enter your password"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- OPTIONS -->
+
+            <div class="form-options">
+
+                <label class="remember">
+
+                    <input
+                        type="checkbox"
+                        id="remember"
+                    >
+
+                    Remember me
+
+                </label>
+
+
+                <a
+                    href="#"
+                    class="forgot"
+                >
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+                class="login-button"
+                onclick="patientLogin()"
+            >
+                Sign In to Patient Portal
+            </button>
+
+
+            <div class="security-note">
+
+                <span class="security-dot"></span>
+
+                Secure healthcare access
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function patientLogin() {
+
+    const email =
+        document.getElementById("patientEmail").value.trim();
+
+    const password =
+        document.getElementById("patientPassword").value.trim();
+
+
+    if (email === "" || password === "") {
+
+        alert("Please enter your email and password.");
+
+        return;
+    }
+
+
+    // Frontend demo login
+    // Backend authentication will be connected later.
+
+    window.location.href =
+        "patient/dashboard.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

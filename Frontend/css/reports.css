@@ -1,0 +1,438 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f8fa;
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 245px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #087f9f, #075f86);
+    color: white;
+    padding: 28px 18px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 45px;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: white;
+    color: #087f9f;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo h2 {
+    font-size: 20px;
+}
+
+.logo p {
+    font-size: 10px;
+    margin-top: 3px;
+    opacity: 0.8;
+}
+
+.portal-title {
+    font-size: 12px;
+    opacity: 0.75;
+    margin: 0 0 18px 15px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 15px 18px;
+    margin-bottom: 8px;
+
+    border-radius: 14px;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.18);
+    border-left: 4px solid #6de8ed;
+}
+
+.nav-icon {
+    width: 20px;
+    text-align: center;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main {
+    flex: 1;
+    padding: 38px 45px;
+    overflow-y: auto;
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 28px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    color: #17445b;
+}
+
+.page-header p {
+    color: #71838d;
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+
+/* =========================
+   UPLOAD BUTTON
+========================= */
+
+.upload-btn {
+    border: none;
+
+    background: #087f9f;
+    color: white;
+
+    padding: 13px 20px;
+
+    border-radius: 11px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.upload-btn:hover {
+    background: #066c88;
+}
+
+
+/* =========================
+   FILTER SECTION
+========================= */
+
+.filter-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 24px;
+}
+
+.search-box {
+    width: 320px;
+
+    padding: 13px 16px;
+
+    border: 1px solid #d5e1e6;
+    border-radius: 11px;
+
+    outline: none;
+
+    background: white;
+
+    font-size: 13px;
+}
+
+.search-box:focus {
+    border-color: #087f9f;
+}
+
+#statusFilter {
+    padding: 13px 16px;
+
+    border: 1px solid #d5e1e6;
+    border-radius: 11px;
+
+    background: white;
+
+    color: #315766;
+
+    font-size: 13px;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   REPORTS CONTAINER
+========================= */
+
+.reports-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+/* =========================
+   REPORT CARD
+========================= */
+
+.report-card {
+    background: white;
+
+    border: 1px solid #e0eaee;
+    border-radius: 17px;
+
+    padding: 20px 22px;
+
+    min-height: 105px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    box-shadow: 0 5px 18px rgba(0, 70, 90, 0.06);
+
+    transition: 0.2s ease;
+}
+
+.report-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 70, 90, 0.10);
+}
+
+
+/* =========================
+   REPORT ICON
+========================= */
+
+.report-icon {
+    width: 52px;
+    height: 52px;
+
+    min-width: 52px;
+
+    border-radius: 14px;
+
+    background: #e2f5f7;
+    color: #087f9f;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   REPORT DETAILS
+========================= */
+
+.report-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.report-details h3 {
+    color: #17445b;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    margin-bottom: 6px;
+}
+
+.patient-name {
+    color: #087f9f;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 9px;
+}
+
+.report-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    color: #82939b;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   REPORT STATUS
+========================= */
+
+.report-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    white-space: nowrap;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.report-status.review {
+    background: #fff3d9;
+    color: #a16a00;
+}
+
+.report-status.reviewed {
+    background: #e4f7ed;
+    color: #208052;
+}
+
+
+/* =========================
+   VIEW BUTTON
+========================= */
+
+.view-btn {
+    border: none;
+
+    background: #087f9f;
+    color: white;
+
+    padding: 11px 17px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+}
+
+.view-btn:hover {
+    background: #066c88;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .main {
+        padding: 30px;
+    }
+
+    .report-card {
+        flex-wrap: wrap;
+    }
+
+    .report-details {
+        min-width: 60%;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        width: 180px;
+    }
+
+    .main {
+        padding: 22px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .page-header h1 {
+        font-size: 26px;
+    }
+
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    #statusFilter {
+        width: 100%;
+    }
+
+    .report-card {
+        align-items: flex-start;
+    }
+
+    .report-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .report-status {
+        margin-left: 72px;
+    }
+
+    .view-btn {
+        margin-left: 72px;
+    }
+}

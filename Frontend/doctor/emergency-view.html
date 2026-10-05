@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFE LINK | Emergency View</title>
+    <link rel="stylesheet" href="../css/emergency.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">♡</div>
+            <div>
+                <h2>LIFE LINK</h2>
+                <p>HEALTHCARE CONNECT</p>
+            </div>
+        </div>
+
+        <div class="portal-title">DOCTOR PORTAL</div>
+
+        <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="patients.html" class="nav-item">
+            <span class="nav-icon">♟</span>
+            <span>Patients</span>
+        </a>
+
+        <a href="reports.html" class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span>Reports</span>
+        </a>
+
+        <a href="analysis.html" class="nav-item">
+            <span class="nav-icon">◉</span>
+            <span>Report Analysis</span>
+        </a>
+
+        <a href="qr.html" class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span>QR Access</span>
+        </a>
+
+        <a href="emergency.html" class="nav-item active">
+            <span class="nav-icon">!</span>
+            <span>Emergency View</span>
+        </a>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <div class="page-header">
+            <div>
+                <h1>Emergency View</h1>
+                <p>Quickly access essential patient information during emergencies.</p>
+            </div>
+
+            <div class="emergency-badge">
+                ● EMERGENCY ACCESS
+            </div>
+        </div>
+
+
+        <!-- Emergency Search -->
+        <section class="search-card">
+
+            <div class="search-content">
+                <h2>Find Patient</h2>
+                <p>Search using patient name or patient ID.</p>
+            </div>
+
+            <div class="search-area">
+                <input
+                    type="text"
+                    id="patientSearch"
+                    placeholder="Enter patient name or ID..."
+                    onkeyup="searchPatient()"
+                >
+
+                <button onclick="searchPatient()">
+                    Search
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- Patient Emergency Card -->
+        <section class="patient-card" id="patientCard">
+
+            <div class="patient-header">
+
+                <div class="patient-profile">
+                    <div class="patient-avatar">AK</div>
+
+                    <div>
+                        <span class="patient-label">PATIENT</span>
+                        <h2>Arun Kumar</h2>
+                        <p>Patient ID: CL001</p>
+                    </div>
+                </div>
+
+                <span class="critical-badge">
+                    EMERGENCY
+                </span>
+
+            </div>
+
+
+            <!-- Emergency Information -->
+            <div class="emergency-grid">
+
+                <div class="info-box">
+                    <span class="info-label">Blood Group</span>
+                    <strong>O+</strong>
+                </div>
+
+                <div class="info-box">
+                    <span class="info-label">Age</span>
+                    <strong>45 Years</strong>
+                </div>
+
+                <div class="info-box">
+                    <span class="info-label">Allergies</span>
+                    <strong>Penicillin</strong>
+                </div>
+
+                <div class="info-box">
+                    <span class="info-label">Emergency Contact</span>
+                    <strong>+91 98765 43210</strong>
+                </div>
+
+            </div>
+
+
+            <!-- Medical Information -->
+            <div class="medical-section">
+
+                <h3>Essential Medical Information</h3>
+
+                <div class="medical-grid">
+
+                    <div>
+                        <span>Current Medication</span>
+                        <p>Regular prescribed medication</p>
+                    </div>
+
+                    <div>
+                        <span>Known Condition</span>
+                        <p>Hypertension</p>
+                    </div>
+
+                    <div>
+                        <span>Last Report</span>
+                        <p>Complete Blood Count</p>
+                    </div>
+
+                    <div>
+                        <span>Last Updated</span>
+                        <p>02 Oct 2026</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Emergency Actions -->
+            <div class="action-section">
+
+                <button class="action-btn primary" onclick="viewReports()">
+                    View Medical Reports
+                </button>
+
+                <button class="action-btn secondary" onclick="viewContact()">
+                    Emergency Contact
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Emergency Notice -->
+        <section class="notice-card">
+
+            <div class="notice-icon">!</div>
+
+            <div>
+                <h3>Emergency Information</h3>
+                <p>
+                    This view is designed to provide essential patient information
+                    quickly. Always verify information and follow appropriate
+                    clinical procedures during an emergency.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- Quick Access Cards -->
+        <section class="quick-section">
+
+            <div class="quick-card">
+                <div class="quick-icon">♥</div>
+                <div>
+                    <h3>Blood Group</h3>
+                    <p>O+ Positive</p>
+                </div>
+            </div>
+
+            <div class="quick-card">
+                <div class="quick-icon">!</div>
+                <div>
+                    <h3>Allergy Alert</h3>
+                    <p>Penicillin</p>
+                </div>
+            </div>
+
+            <div class="quick-card">
+                <div class="quick-icon">☎</div>
+                <div>
+                    <h3>Emergency Contact</h3>
+                    <p>Available</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function searchPatient() {
+
+            const search = document
+                .getElementById("patientSearch")
+                .value
+                .toLowerCase();
+
+            const patientCard = document.getElementById("patientCard");
+
+            if (
+                search === "" ||
+                "arun kumar".includes(search) ||
+                "cl001".includes(search)
+            ) {
+                patientCard.style.display = "block";
+            } else {
+                patientCard.style.display = "none";
+                alert("Patient not found.");
+            }
+        }
+
+
+        function viewReports() {
+            window.location.href = "reports.html";
+        }
+
+
+        function viewContact() {
+            alert("Emergency contact: +91 98765 43210");
+        }
+
+    </script>
+
+</body>
+</html>

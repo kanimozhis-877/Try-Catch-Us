@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LIFE LINK | Better Context. Better Care.</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+
+            min-height: 100vh;
+
+            color: #092b4a;
+
+            background:
+                radial-gradient(
+                    circle at 10% 15%,
+                    rgba(0, 190, 255, 0.22),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 90% 85%,
+                    rgba(48, 88, 220, 0.20),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #e5f8ff,
+                    #f7fbff 48%,
+                    #e8efff
+                );
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            width: 100%;
+
+            height: 78px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background: rgba(255, 255, 255, 0.94);
+
+            border-bottom: 1px solid #d6e8f1;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            color: #0b2d4d;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #008fc4,
+                    #0065aa
+                );
+
+            box-shadow:
+                0 7px 18px rgba(0, 125, 180, 0.25);
+        }
+
+        .brand-logo svg {
+            width: 31px;
+            height: 31px;
+        }
+
+        .brand span {
+            color: #008fc4;
+        }
+
+        .language {
+            padding: 9px 13px;
+
+            border: 1px solid #c6dce8;
+
+            border-radius: 9px;
+
+            background: white;
+
+            color: #31536d;
+
+            font-size: 13px;
+
+            outline: none;
+
+            cursor: pointer;
+        }
+
+        /* ================= MAIN ================= */
+
+        .hero {
+            min-height: calc(100vh - 78px);
+
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            align-items: center;
+
+            gap: 55px;
+
+            padding: 65px 8%;
+        }
+
+        /* ================= LEFT ================= */
+
+        .hero-content {
+            max-width: 590px;
+        }
+
+        .tag {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 8px 14px;
+
+            margin-bottom: 20px;
+
+            border-radius: 30px;
+
+            background: #d8f4ff;
+
+            color: #087ca9;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.4px;
+        }
+
+        .tag-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #00a6d9;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(42px, 5vw, 68px);
+
+            line-height: 1.05;
+
+            color: #092b4a;
+
+            margin-bottom: 20px;
+
+            letter-spacing: -1.5px;
+        }
+
+        .hero-content h1 span {
+            color: #008fca;
+        }
+
+        .hero-content p {
+            max-width: 510px;
+
+            color: #5d7588;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            margin-bottom: 35px;
+        }
+
+        /* ================= PORTAL CARDS ================= */
+
+        .portal-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 17px;
+
+            max-width: 570px;
+        }
+
+        .portal-card {
+            min-height: 175px;
+
+            padding: 23px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            text-decoration: none;
+
+            background: rgba(255,255,255,0.95);
+
+            border: 1px solid #d4e7ef;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 12px 35px rgba(23, 92, 130, 0.10);
+
+            transition: 0.25s;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 18px 42px rgba(23, 92, 130, 0.17);
+        }
+
+        .doctor-card {
+            border-top: 4px solid #008fc7;
+        }
+
+        .patient-card {
+            border-top: 4px solid #586fe4;
+        }
+
+        .portal-icon {
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            font-size: 21px;
+
+            margin-bottom: 15px;
+        }
+
+        .doctor-icon {
+            background: #d9f5ff;
+
+            color: #007ead;
+        }
+
+        .patient-icon {
+            background: #e4e9ff;
+
+            color: #4e63d3;
+        }
+
+        .portal-card h3 {
+            color: #173b57;
+
+            font-size: 17px;
+
+            margin-bottom: 6px;
+        }
+
+        .portal-card p {
+            color: #718696;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            margin: 0;
+        }
+
+        .portal-arrow {
+            align-self: flex-end;
+
+            font-size: 18px;
+
+            color: #008fc7;
+        }
+
+        /* ================= RIGHT VISUAL ================= */
+
+        .visual-area {
+            min-height: 520px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+        }
+
+        .medical-card {
+            width: min(470px, 100%);
+
+            height: 450px;
+
+            border-radius: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #c8f2ff,
+                    #ffffff 48%,
+                    #dce5ff
+                );
+
+            border: 1px solid rgba(255,255,255,0.85);
+
+            box-shadow:
+                0 25px 65px rgba(25, 104, 155, 0.18);
+        }
+
+        /* ================= HEART ================= */
+
+        .heart {
+            width: 250px;
+            height: 250px;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            filter:
+                drop-shadow(
+                    0 18px 25px
+                    rgba(0, 105, 170, 0.25)
+                );
+        }
+
+        .heart-shape {
+            width: 190px;
+            height: 190px;
+
+            transform: rotate(-45deg);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #13c5ed,
+                    #0079c8
+                );
+
+            border-radius: 28px;
+
+            position: relative;
+        }
+
+        .heart-shape::before,
+        .heart-shape::after {
+            content: "";
+
+            width: 190px;
+            height: 190px;
+
+            position: absolute;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #13c5ed,
+                    #0079c8
+                );
+
+            border-radius: 50%;
+        }
+
+        .heart-shape::before {
+            top: -95px;
+            left: 0;
+        }
+
+        .heart-shape::after {
+            top: 0;
+            left: 95px;
+        }
+
+        /* ================= ECG ================= */
+
+        .ecg {
+            position: absolute;
+
+            width: 255px;
+
+            z-index: 5;
+
+            filter:
+                drop-shadow(
+                    0 2px 3px
+                    rgba(0, 65, 110, 0.20)
+                );
+        }
+
+        .ecg polyline {
+            fill: none;
+
+            stroke: white;
+
+            stroke-width: 7;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+        /* ================= FLOATING INFO ================= */
+
+        .info-card {
+            position: absolute;
+
+            top: 38px;
+            left: 0;
+
+            min-width: 180px;
+
+            padding: 15px 18px;
+
+            background: rgba(255,255,255,0.96);
+
+            border: 1px solid #d6e8f0;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 15px 35px rgba(20, 90, 130, 0.13);
+        }
+
+        .info-card strong {
+            display: block;
+
+            color: #173b57;
+
+            font-size: 13px;
+
+            margin-bottom: 4px;
+        }
+
+        .info-card span {
+            color: #7890a0;
+
+            font-size: 11px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        .footer-text {
+            position: absolute;
+
+            bottom: 25px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            color: #7d93a2;
+
+            font-size: 11px;
+
+            text-align: center;
+
+            white-space: nowrap;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+
+                padding: 55px 7%;
+
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 700px;
+
+                margin: auto;
+            }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .portal-grid {
+                margin: auto;
+
+                text-align: left;
+            }
+
+            .visual-area {
+                min-height: 430px;
+            }
+
+            .info-card {
+                left: 5%;
+            }
+
+            .footer-text {
+                position: static;
+
+                transform: none;
+
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            .brand {
+                font-size: 18px;
+            }
+
+            .brand-logo {
+                width: 38px;
+                height: 38px;
+            }
+
+            .hero {
+                padding: 45px 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .hero-content p {
+                font-size: 14px;
+            }
+
+            .portal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .medical-card {
+                height: 350px;
+
+                border-radius: 28px;
+            }
+
+            .heart-shape,
+            .heart-shape::before,
+            .heart-shape::after {
+                width: 145px;
+                height: 145px;
+            }
+
+            .heart-shape::before {
+                top: -72px;
+            }
+
+            .heart-shape::after {
+                left: 72px;
+            }
+
+            .ecg {
+                width: 190px;
+            }
+
+            .info-card {
+                top: 10px;
+                left: 0;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="brand">
+
+        <div class="brand-logo">
+
+            <svg viewBox="0 0 60 60">
+
+                <path
+                    d="M30 50
+                       C26 46 10 37 10 22
+                       C10 13 16 8 23 8
+                       C27 8 30 11 30 15
+                       C30 11 33 8 37 8
+                       C44 8 50 13 50 22
+                       C50 37 34 46 30 50Z"
+
+                    fill="none"
+
+                    stroke="white"
+
+                    stroke-width="3.5"
+                />
+
+                <polyline
+                    points="
+                    12,27
+                    21,27
+                    25,22
+                    29,35
+                    34,16
+                    38,27
+                    48,27"
+
+                    fill="none"
+
+                    stroke="#66e2ff"
+
+                    stroke-width="3"
+
+                    stroke-linecap="round"
+
+                    stroke-linejoin="round"
+                />
+
+            </svg>
+
+        </div>
+
+
+        LIFE <span>LINK</span>
+
+    </div>
+
+
+    <select
+        class="language"
+        id="language"
+        onchange="changeLanguage()"
+    >
+
+        <option value="en">
+            English
+        </option>
+
+        <option value="ta">
+            தமிழ்
+        </option>
+
+    </select>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<main class="hero">
+
+
+    <!-- ================= LEFT ================= -->
+
+    <section class="hero-content">
+
+
+        <div class="tag">
+
+            <span class="tag-dot"></span>
+
+            Connected Healthcare Experience
+
+        </div>
+
+
+        <h1>
+
+            Better Context.<br>
+
+            <span>Better Care.</span>
+
+        </h1>
+
+
+        <p>
+
+            LIFE LINK brings medical information together
+            so doctors can understand patient history,
+            reports and changes with greater clarity.
+
+        </p>
+
+
+        <!-- PORTALS -->
+
+        <div class="portal-grid">
+
+
+            <!-- DOCTOR -->
+
+            <a
+                href="doctor-login.html"
+                class="portal-card doctor-card"
+            >
+
+                <div>
+
+                    <div class="portal-icon doctor-icon">
+                        🩺
+                    </div>
+
+                    <h3>
+                        Doctor Portal
+                    </h3>
+
+                    <p>
+                        Review patient information,
+                        reports and clinical context.
+                    </p>
+
+                </div>
+
+
+                <div class="portal-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+
+            <!-- PATIENT -->
+
+            <a
+                href="patient-login.html"
+                class="portal-card patient-card"
+            >
+
+                <div>
+
+                    <div class="portal-icon patient-icon">
+                        ♥
+                    </div>
+
+                    <h3>
+                        Patient Portal
+                    </h3>
+
+                    <p>
+                        Manage your health information
+                        and medical reports.
+                    </p>
+
+                </div>
+
+
+                <div class="portal-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= RIGHT VISUAL ================= -->
+
+    <section class="visual-area">
+
+
+        <div class="medical-card">
+
+
+            <!-- TOP INFORMATION CARD -->
+
+            <div class="info-card">
+
+                <strong>
+                    Medical Reports
+                </strong>
+
+                <span>
+                    Organized & connected
+                </span>
+
+            </div>
+
+
+            <!-- HEART -->
+
+            <div class="heart">
+
+                <div class="heart-shape"></div>
+
+
+                <svg
+                    class="ecg"
+                    viewBox="0 0 300 100"
+                >
+
+                    <polyline
+                        points="
+                        0,55
+                        55,55
+                        75,55
+                        92,38
+                        108,70
+                        132,12
+                        155,55
+                        190,55
+                        208,55
+                        225,40
+                        240,70
+                        258,55
+                        300,55
+                        "
+                    />
+
+                </svg>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<div class="footer-text">
+
+    LIFE LINK • Better Context. Better Care.
+
+</div>
+
+
+
+<script>
+
+function changeLanguage() {
+
+    const language =
+        document.getElementById("language").value;
+
+
+    if (language === "ta") {
+
+        alert(
+            "தமிழ் மொழி ஆதரவு விரைவில் சேர்க்கப்படும்."
+        );
+
+        document.getElementById("language").value = "en";
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>

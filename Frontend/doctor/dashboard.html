@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LIFE LINK | Doctor Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f3f8fc;
+            color: #183b56;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================
+           MAIN LAYOUT
+        ========================= */
+
+        .dashboard {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            width: 250px;
+            min-height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 100;
+
+            background: linear-gradient(
+                160deg,
+                #043b68 0%,
+                #075d91 55%,
+                #009bc4 100%
+            );
+
+            color: white;
+            padding: 24px 18px;
+
+            display: flex;
+            flex-direction: column;
+
+            box-shadow: 8px 0 30px rgba(0, 65, 100, 0.15);
+        }
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 8px 30px;
+        }
+
+        .brand-logo {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        .brand-logo svg {
+            width: 34px;
+            height: 34px;
+            display: block;
+        }
+
+        .brand-text {
+            line-height: 1.1;
+        }
+
+        .brand-name {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+        }
+
+        .brand-subtitle {
+            font-size: 9px;
+            margin-top: 5px;
+            color: rgba(255,255,255,0.65);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .nav-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.55);
+            padding: 0 12px;
+            margin-bottom: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .nav-item {
+            min-height: 47px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            padding: 0 13px;
+            border-radius: 12px;
+
+            color: rgba(255,255,255,0.78);
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: 0.2s ease;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.10);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: rgba(255,255,255,0.17);
+            color: white;
+
+            box-shadow: inset 3px 0 #68e4ff;
+        }
+
+        .nav-icon {
+            width: 24px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        /* =========================
+           SIDEBAR BOTTOM
+        ========================= */
+
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+
+        .doctor-mini {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 12px;
+            border-radius: 14px;
+
+            background: rgba(255,255,255,0.10);
+            margin-bottom: 10px;
+        }
+
+        .doctor-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #d8f5ff;
+            color: #087da8;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .doctor-info {
+            min-width: 0;
+        }
+
+        .doctor-info strong {
+            display: block;
+            font-size: 12px;
+            color: white;
+        }
+
+        .doctor-info span {
+            display: block;
+            margin-top: 3px;
+            font-size: 9px;
+            color: rgba(255,255,255,0.58);
+        }
+
+        .logout {
+            width: 100%;
+            height: 40px;
+
+            border: 1px solid rgba(255,255,255,0.20);
+            border-radius: 10px;
+
+            background: transparent;
+            color: rgba(255,255,255,0.75);
+
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .logout:hover {
+            background: rgba(255,255,255,0.10);
+            color: white;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            width: calc(100% - 250px);
+            margin-left: 250px;
+
+            min-height: 100vh;
+            padding: 30px 35px 45px;
+        }
+
+        /* =========================
+           TOP BAR
+        ========================= */
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 28px;
+        }
+
+        .page-title h1 {
+            font-size: 28px;
+            color: #123953;
+            margin-bottom: 6px;
+        }
+
+        .page-title p {
+            font-size: 13px;
+            color: #7891a2;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notification {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid #d9e8ef;
+            border-radius: 12px;
+
+            background: white;
+            font-size: 18px;
+
+            box-shadow: 0 5px 18px rgba(30,80,110,0.06);
+        }
+
+        .profile-button {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 5px 13px 5px 5px;
+
+            border: 1px solid #d9e8ef;
+            border-radius: 13px;
+
+            background: white;
+        }
+
+        .profile-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #d8f5ff;
+            color: #087da8;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .profile-button span {
+            font-size: 12px;
+            font-weight: 700;
+            color: #31536d;
+        }
+
+        /* =========================
+           WELCOME BANNER
+        ========================= */
+
+        .welcome-banner {
+            min-height: 165px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: relative;
+            overflow: hidden;
+
+            padding: 28px 32px;
+            margin-bottom: 25px;
+
+            border-radius: 22px;
+
+            background: linear-gradient(
+                120deg,
+                #064d80,
+                #007fac,
+                #00a1c7
+            );
+
+            color: white;
+
+            box-shadow: 0 15px 35px rgba(0,100,150,0.17);
+        }
+
+        .welcome-banner::before {
+            content: "";
+            position: absolute;
+
+            width: 260px;
+            height: 260px;
+
+            right: -90px;
+            top: -110px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.08);
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-content small {
+            font-size: 11px;
+            color: rgba(255,255,255,0.72);
+        }
+
+        .welcome-content h2 {
+            font-size: 25px;
+            margin: 7px 0 8px;
+        }
+
+        .welcome-content p {
+            max-width: 570px;
+
+            font-size: 12px;
+            line-height: 1.6;
+
+            color: rgba(255,255,255,0.78);
+        }
+
+        .banner-icon {
+            width: 95px;
+            height: 95px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-right: 35px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.22);
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner-icon svg {
+            width: 58px;
+            height: 58px;
+        }
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 17px;
+
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            min-height: 135px;
+
+            background: white;
+            border: 1px solid #dceaf0;
+            border-radius: 17px;
+
+            padding: 20px;
+
+            box-shadow: 0 8px 25px rgba(30,90,120,0.06);
+        }
+
+        .stat-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 15px;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+            font-size: 18px;
+        }
+
+        .blue {
+            background: #dff5ff;
+            color: #0788b8;
+        }
+
+        .purple {
+            background: #e9e7ff;
+            color: #5b59ca;
+        }
+
+        .green {
+            background: #def7ee;
+            color: #11936e;
+        }
+
+        .orange {
+            background: #fff0dc;
+            color: #c77a13;
+        }
+
+        .stat-label {
+            color: #8094a2;
+            font-size: 11px;
+        }
+
+        .stat-value {
+            color: #173b57;
+            font-size: 26px;
+            font-weight: 800;
+            margin-top: 3px;
+        }
+
+        /* =========================
+           CONTENT GRID
+        ========================= */
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+        }
+
+        .section-card {
+            background: white;
+            border: 1px solid #dceaf0;
+            border-radius: 18px;
+
+            padding: 22px;
+
+            box-shadow: 0 8px 25px rgba(30,90,120,0.05);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+        }
+
+        .section-header h3 {
+            font-size: 16px;
+            color: #173b57;
+        }
+
+        .view-all {
+            color: #078fbe;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           PATIENT LIST
+        ========================= */
+
+        .patient-list {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .patient-row {
+            min-height: 62px;
+
+            display: grid;
+            grid-template-columns: 42px 1fr auto;
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 9px 11px;
+
+            border-radius: 12px;
+        }
+
+        .patient-row:hover {
+            background: #f3faff;
+        }
+
+        .patient-avatar {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: #e1f5ff;
+            color: #087ea9;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .patient-details strong {
+            display: block;
+
+            color: #284c65;
+            font-size: 12px;
+
+            margin-bottom: 3px;
+        }
+
+        .patient-details span {
+            color: #91a1ac;
+            font-size: 10px;
+        }
+
+        .status {
+            padding: 5px 9px;
+            border-radius: 20px;
+
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .status-normal {
+            background: #def7ee;
+            color: #118967;
+        }
+
+        .status-review {
+            background: #fff0d9;
+            color: #b87312;
+        }
+
+        /* =========================
+           REPORT LIST
+        ========================= */
+
+        .report-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .report-row {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            padding: 11px;
+
+            border-radius: 12px;
+            background: #f7fbfd;
+        }
+
+        .report-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #e1f5ff;
+            color: #0788b8;
+
+            font-size: 16px;
+        }
+
+        .report-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .report-info strong {
+            display: block;
+
+            color: #34566d;
+            font-size: 11px;
+
+            margin-bottom: 3px;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .report-info span {
+            color: #94a5af;
+            font-size: 9px;
+        }
+
+        .report-arrow {
+            color: #078fbe;
+            font-size: 15px;
+        }
+
+        /* =========================
+           QUICK ACTIONS
+        ========================= */
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .quick-action {
+            min-height: 70px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 12px;
+
+            border: 1px solid #e0edf2;
+            border-radius: 12px;
+
+            background: #fbfdfe;
+
+            transition: 0.2s;
+        }
+
+        .quick-action:hover {
+            border-color: #9dd7e8;
+            background: #f1fbff;
+        }
+
+        .quick-icon {
+            width: 35px;
+            height: 35px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background: #e1f5ff;
+            color: #0788b8;
+
+            font-size: 15px;
+        }
+
+        .quick-action strong {
+            display: block;
+
+            color: #34566d;
+            font-size: 10px;
+
+            margin-bottom: 2px;
+        }
+
+        .quick-action span {
+            color: #95a4ae;
+            font-size: 9px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1100px) {
+
+            .sidebar {
+                width: 220px;
+            }
+
+            .main {
+                width: calc(100% - 220px);
+                margin-left: 220px;
+                padding: 25px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .dashboard {
+                display: block;
+            }
+
+            .sidebar {
+                position: relative;
+
+                width: 100%;
+                min-height: auto;
+
+                padding: 15px;
+            }
+
+            .brand {
+                padding-bottom: 15px;
+            }
+
+            .nav-title,
+            .sidebar-bottom {
+                display: none;
+            }
+
+            .nav-menu {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+
+            .nav-item {
+                flex: 0 0 auto;
+            }
+
+            .main {
+                width: 100%;
+                margin-left: 0;
+                padding: 22px 17px 35px;
+            }
+
+            .banner-icon {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .top-actions {
+                display: none;
+            }
+
+            .page-title h1 {
+                font-size: 23px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 15px;
+                min-height: 120px;
+            }
+
+            .stat-value {
+                font-size: 22px;
+            }
+
+            .welcome-banner {
+                padding: 22px;
+            }
+
+            .welcome-content h2 {
+                font-size: 21px;
+            }
+
+            .section-card {
+                padding: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <!-- LIFE LINK LOGO -->
+
+        <div class="brand">
+
+            <div class="brand-logo">
+
+                <!-- HEART + ECG -->
+
+                <svg viewBox="0 0 100 100" fill="none">
+
+                    <path
+                        d="M50 82
+                        C45 77 18 61 18 37
+                        C18 23 27 14 39 14
+                        C46 14 50 19 50 25
+                        C50 19 54 14 61 14
+                        C73 14 82 23 82 37
+                        C82 61 55 77 50 82Z"
+                        stroke="white"
+                        stroke-width="5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+
+                    <!-- ECG LINE -->
+
+                    <path
+                        d="M25 47
+                        H38
+                        L44 35
+                        L50 61
+                        L57 42
+                        L62 50
+                        H76"
+                        stroke="#69E7FF"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+
+                </svg>
+
+            </div>
+
+            <div class="brand-text">
+
+                <div class="brand-name">
+                    LIFE LINK
+                </div>
+
+                <div class="brand-subtitle">
+                    Healthcare Connect
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="nav-title">
+            Doctor Portal
+        </div>
+
+
+        <nav class="nav-menu">
+
+            <a href="dashboard.html" class="nav-item active">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="patients.html" class="nav-item">
+                <span class="nav-icon">♙</span>
+                <span>Patients</span>
+            </a>
+
+            <a href="reports.html" class="nav-item">
+                <span class="nav-icon">▤</span>
+                <span>Reports</span>
