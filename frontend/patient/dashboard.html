@@ -1,667 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>LIFE LINK | Patient Dashboard</title>
 
+    <link rel="stylesheet" href="../css/patient.css">
     <link rel="stylesheet" href="../css/patient-dashboard.css">
 </head>
 
 <body>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+<!-- ================= SIDEBAR ================= -->
 
-        <div class="logo">
+<aside class="sidebar">
 
-            <div class="logo-icon">♡</div>
+    <div class="brand">
 
-            <div>
-                <h2>LIFE LINK</h2>
-                <p>HEALTHCARE CONNECT</p>
-            </div>
+        <div class="brand-logo">
+            <svg viewBox="0 0 100 100">
+                <path
+                    d="M50 82
+                    C45 76 18 60 14 38
+                    C10 18 31 8 50 27
+                    C69 8 90 18 86 38
+                    C82 60 55 76 50 82Z"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="6"
+                />
 
+                <polyline
+                    points="18,45 31,45 38,35 46,55 54,43 62,43 70,45 82,45"
+                    fill="none"
+                    stroke="#69E7FF"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
         </div>
 
-        <div class="portal-title">
-            PATIENT PORTAL
+        <div class="brand-text">
+            <h2>LIFE LINK</h2>
+            <span>Patient Portal</span>
         </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
 
         <a href="dashboard.html" class="nav-item active">
             <span class="nav-icon">⌂</span>
             <span>Dashboard</span>
         </a>
 
-<<<<<<< HEAD
+        <a href="profile.html" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span>My Profile</span>
+        </a>
+
         <a href="reports.html" class="nav-item">
-=======
-        <a href="#" class="nav-item">
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-            <span class="nav-icon">▤</span>
+            <span class="nav-icon">📄</span>
             <span>My Reports</span>
         </a>
 
-<<<<<<< HEAD
-        <a href="analysis.html" class="nav-item">
-=======
-        <a href="#" class="nav-item">
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-            <span class="nav-icon">◉</span>
-            <span>Report Analysis</span>
+        <a href="upload-report.html" class="nav-item">
+            <span class="nav-icon">⬆</span>
+            <span>Upload Report</span>
         </a>
 
-<<<<<<< HEAD
-        <a href="qr.html" class="nav-item">
-=======
-        <a href="#" class="nav-item">
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-            <span class="nav-icon">▣</span>
+        <a href="qr-access.html" class="nav-item">
+            <span class="nav-icon">▦</span>
             <span>QR Access</span>
         </a>
 
-<<<<<<< HEAD
-        <a href="emergency.html" class="nav-item">
-=======
-        <a href="#" class="nav-item">
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-            <span class="nav-icon">!</span>
-            <span>Emergency</span>
-        </a>
-
-    </aside>
+    </nav>
 
 
-    <!-- MAIN CONTENT -->
-    <main class="main">
+    <div class="secure-box">
 
-<<<<<<< HEAD
+        <div class="secure-icon">✓</div>
 
-        <!-- PAGE HEADER -->
-=======
-        <!-- HEADER -->
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-        <header class="page-header">
+        <div>
+            <strong>Secure Health Data</strong>
+            <p>Your medical information is protected.</p>
+        </div>
+
+    </div>
+
+
+    <a href="../patient-login.html" class="logout-btn">
+        <span>↪</span>
+        Logout
+    </a>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main-content">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div>
+            <p class="welcome-small">Patient Portal</p>
+            <h1>Patient Dashboard</h1>
+        </div>
+
+        <div class="patient-mini">
+
+            <div class="mini-avatar">AK</div>
 
             <div>
-                <h1>Welcome, Arun Kumar</h1>
-<<<<<<< HEAD
+                <strong>Arun Kumar</strong>
+                <span>Patient ID: LL1001</span>
+            </div>
 
-                <p>
-                    View your health information and recent medical reports.
-                </p>
+        </div>
+
+    </header>
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome-banner">
+
+        <div class="welcome-content">
+
+            <span class="banner-label">WELCOME BACK</span>
+
+            <h2>Hello, Arun Kumar 👋</h2>
+
+            <p>
+                Manage your medical reports, profile information
+                and secure healthcare access from one place.
+            </p>
+
+        </div>
+
+        <div class="health-icon">
+            ♥
+        </div>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-icon blue">📄</div>
+
+            <div>
+                <span>Total Reports</span>
+                <strong>4</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon green">✓</div>
+
+            <div>
+                <span>Reviewed Reports</span>
+                <strong>3</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon orange">!</div>
+
+            <div>
+                <span>Pending Reports</span>
+                <strong>1</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon cyan">▦</div>
+
+            <div>
+                <span>QR Access</span>
+                <strong>10 min</strong>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- DASHBOARD CONTENT -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- RECENT REPORTS -->
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Recent Reports</h2>
+                    <p>Your latest medical reports</p>
+                </div>
+
+                <a href="reports.html">View All</a>
+
             </div>
 
 
-=======
-                <p>View your health information and recent medical reports.</p>
-            </div>
+            <div class="report-item">
 
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-            <div class="profile-box">
+                <div class="report-icon">🩸</div>
 
-                <div class="profile-avatar">
-                    AK
+                <div class="report-info">
+                    <h3>Complete Blood Count</h3>
+                    <p>28 Sep 2026</p>
                 </div>
 
-                <div>
-                    <strong>Arun Kumar</strong>
-                    <span>Patient ID: CL001</span>
-                </div>
+                <span class="status reviewed">
+                    Reviewed
+                </span>
 
             </div>
 
-        </header>
 
+            <div class="report-item">
 
-<<<<<<< HEAD
-        <!-- PATIENT PROFILE -->
-=======
-        <!-- PROFILE CARD -->
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-        <section class="profile-card">
+                <div class="report-icon">♥</div>
 
-            <div class="profile-main">
-
-                <div class="large-avatar">
-                    AK
+                <div class="report-info">
+                    <h3>ECG Report</h3>
+                    <p>22 Sep 2026</p>
                 </div>
 
-                <div>
-
-                    <span class="patient-label">
-                        PATIENT PROFILE
-                    </span>
-
-                    <h2>Arun Kumar</h2>
-
-                    <p>
-                        Patient ID: CL001
-                    </p>
-
-                </div>
+                <span class="status reviewed">
+                    Reviewed
+                </span>
 
             </div>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-            <div class="profile-details">
+            <div class="report-item">
 
-                <div>
-                    <span>Age</span>
-                    <strong>45 Years</strong>
+                <div class="report-icon">📊</div>
+
+                <div class="report-info">
+                    <h3>Lipid Profile</h3>
+                    <p>15 Sep 2026</p>
                 </div>
 
+                <span class="status reviewed">
+                    Reviewed
+                </span>
+
+            </div>
+
+
+            <div class="report-item">
+
+                <div class="report-icon">📋</div>
+
+                <div class="report-info">
+                    <h3>Health Checkup Report</h3>
+                    <p>05 Sep 2026</p>
+                </div>
+
+                <span class="status pending">
+                    Pending
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- HEALTH SUMMARY -->
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
                 <div>
+                    <h2>Health Summary</h2>
+                    <p>Your basic health information</p>
+                </div>
+
+                <a href="profile.html">View Profile</a>
+
+            </div>
+
+
+            <div class="health-summary">
+
+                <div class="health-row">
                     <span>Blood Group</span>
-                    <strong>O+</strong>
+                    <strong>B+</strong>
                 </div>
 
-                <div>
-                    <span>Last Updated</span>
-                    <strong>02 Oct 2026</strong>
+                <div class="health-row">
+                    <span>Age</span>
+                    <strong>42 Years</strong>
                 </div>
 
-            </div>
-
-        </section>
-
-
-        <!-- SUMMARY CARDS -->
-        <section class="summary-grid">
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-            <div class="summary-card">
-
-                <div class="summary-icon">
-                    ▤
+                <div class="health-row">
+                    <span>Gender</span>
+                    <strong>Male</strong>
                 </div>
 
-                <div>
-<<<<<<< HEAD
+                <div class="health-row">
+                    <span>Patient ID</span>
+                    <strong>LL1001</strong>
+                </div>
 
-                    <span>Total Reports</span>
-
-                    <strong>4</strong>
-
-                    <p>
-                        Medical reports
-                    </p>
-
-=======
-                    <span>Total Reports</span>
-                    <strong>4</strong>
-                    <p>Medical reports</p>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
+                <div class="health-row">
+                    <span>Profile Status</span>
+                    <strong class="active-text">Active</strong>
                 </div>
 
             </div>
 
+        </div>
 
-            <div class="summary-card">
+    </section>
 
-                <div class="summary-icon">
-                    ◉
-                </div>
 
-                <div>
-<<<<<<< HEAD
+    <!-- QUICK ACTIONS -->
 
-                    <span>Latest Report</span>
+    <section class="quick-section">
 
-                    <strong>02 Oct</strong>
-
-                    <p>
-                        Complete Blood Count
-                    </p>
-
-=======
-                    <span>Latest Report</span>
-                    <strong>02 Oct</strong>
-                    <p>Complete Blood Count</p>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                </div>
-
-            </div>
-
-
-            <div class="summary-card">
-
-                <div class="summary-icon">
-                    ✓
-                </div>
-
-                <div>
-<<<<<<< HEAD
-
-                    <span>Reports Reviewed</span>
-
-                    <strong>3</strong>
-
-                    <p>
-                        Reviewed by doctor
-                    </p>
-
-=======
-                    <span>Reports Reviewed</span>
-                    <strong>3</strong>
-                    <p>Reviewed by doctor</p>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                </div>
-
-            </div>
-
-        </section>
-
-
-<<<<<<< HEAD
-        <!-- CONTENT GRID -->
-=======
-        <!-- MAIN GRID -->
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-        <section class="content-grid">
-
-
-            <!-- RECENT REPORTS -->
-            <div class="reports-card">
-
-                <div class="card-header">
-
-                    <div>
-<<<<<<< HEAD
-
-                        <h2>
-                            Recent Reports
-                        </h2>
-
-                        <p>
-                            Your latest medical reports.
-                        </p>
-
-=======
-                        <h2>Recent Reports</h2>
-                        <p>Your latest medical reports.</p>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                    </div>
-
-                    <button onclick="viewReports()">
-                        View All
-                    </button>
-
-                </div>
-
-
-<<<<<<< HEAD
-                <!-- REPORT 1 -->
-=======
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                <div class="report-item">
-
-                    <div class="report-icon">
-                        ▤
-                    </div>
-
-                    <div class="report-info">
-
-<<<<<<< HEAD
-                        <h3>
-                            Complete Blood Count
-                        </h3>
-=======
-                        <h3>Complete Blood Count</h3>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-
-                        <p>
-                            02 Oct 2026
-                        </p>
-
-                    </div>
-
-                    <span class="status reviewed">
-                        Reviewed
-                    </span>
-
-                </div>
-
-
-<<<<<<< HEAD
-                <!-- REPORT 2 -->
-=======
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                <div class="report-item">
-
-                    <div class="report-icon">
-                        ▤
-                    </div>
-
-                    <div class="report-info">
-
-<<<<<<< HEAD
-                        <h3>
-                            Lipid Profile
-                        </h3>
-=======
-                        <h3>Lipid Profile</h3>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-
-                        <p>
-                            30 Sep 2026
-                        </p>
-
-                    </div>
-
-                    <span class="status reviewed">
-                        Reviewed
-                    </span>
-
-                </div>
-
-
-<<<<<<< HEAD
-                <!-- REPORT 3 -->
-=======
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                <div class="report-item">
-
-                    <div class="report-icon">
-                        ▤
-                    </div>
-
-                    <div class="report-info">
-
-<<<<<<< HEAD
-                        <h3>
-                            ECG Report
-                        </h3>
-=======
-                        <h3>ECG Report</h3>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-
-                        <p>
-                            28 Sep 2026
-                        </p>
-
-                    </div>
-
-                    <span class="status pending">
-                        Under Review
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- HEALTH SUMMARY -->
-            <div class="health-card">
-
-                <div class="card-header">
-
-                    <div>
-<<<<<<< HEAD
-
-                        <h2>
-                            Health Summary
-                        </h2>
-
-                        <p>
-                            Important information
-                        </p>
-
-=======
-                        <h2>Health Summary</h2>
-                        <p>Important information</p>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                    </div>
-
-                </div>
-
-
-                <div class="health-item">
-
-                    <span>
-                        Blood Group
-                    </span>
-
-                    <strong>
-                        O+
-                    </strong>
-
-                </div>
-
-
-                <div class="health-item">
-
-                    <span>
-                        Known Condition
-                    </span>
-
-                    <strong>
-                        Hypertension
-                    </strong>
-
-                </div>
-
-
-                <div class="health-item">
-
-                    <span>
-                        Allergy
-                    </span>
-
-                    <strong>
-                        Penicillin
-                    </strong>
-
-                </div>
-
-
-                <div class="health-item">
-
-                    <span>
-                        Emergency Contact
-                    </span>
-
-                    <strong>
-                        Available
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-<<<<<<< HEAD
-        <!-- QUICK ACCESS -->
-=======
-        <!-- QUICK ACTIONS -->
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-        <section class="quick-section">
-
-            <div class="section-title">
-
-<<<<<<< HEAD
-                <h2>
-                    Quick Access
-                </h2>
-=======
-                <h2>Quick Access</h2>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-
-                <p>
-                    Access important healthcare features quickly.
-                </p>
-
-            </div>
-
-
-            <div class="quick-grid">
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                <div class="quick-card" onclick="viewReports()">
-
-                    <div class="quick-icon">
-                        ▤
-                    </div>
-
-                    <div>
-<<<<<<< HEAD
-
-                        <h3>
-                            My Reports
-                        </h3>
-
-                        <p>
-                            View your medical reports
-                        </p>
-
-=======
-                        <h3>My Reports</h3>
-                        <p>View your medical reports</p>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                    </div>
-
-                </div>
-
-
-                <div class="quick-card">
-
-                    <div class="quick-icon">
-                        ◉
-                    </div>
-
-                    <div>
-<<<<<<< HEAD
-
-                        <h3>
-                            Report Analysis
-                        </h3>
-
-                        <p>
-                            View report changes
-                        </p>
-
-=======
-                        <h3>Report Analysis</h3>
-                        <p>View report changes</p>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                    </div>
-
-                </div>
-
-
-                <div class="quick-card">
-
-                    <div class="quick-icon">
-                        ▣
-                    </div>
-
-                    <div>
-<<<<<<< HEAD
-
-                        <h3>
-                            QR Access
-                        </h3>
-
-                        <p>
-                            Access your secure QR
-                        </p>
-
-=======
-                        <h3>QR Access</h3>
-                        <p>Access your secure QR</p>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                    </div>
-
-                </div>
-
-
-                <div class="quick-card emergency">
-
-                    <div class="quick-icon">
-                        !
-                    </div>
-
-                    <div>
-<<<<<<< HEAD
-
-                        <h3>
-                            Emergency
-                        </h3>
-
-                        <p>
-                            View emergency information
-                        </p>
-
-=======
-                        <h3>Emergency</h3>
-                        <p>View emergency information</p>
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- NOTICE -->
-        <section class="notice-card">
-
-            <div class="notice-icon">
-                ✓
-            </div>
+        <div class="section-title">
 
             <div>
-
-                <h3>
-                    Your Health Information
-                </h3>
-
-                <p>
-                    Your medical information is organized in one place
-                    for easier access and better communication with
-                    healthcare professionals.
-                </p>
-
+                <h2>Quick Actions</h2>
+                <p>Access your important healthcare features</p>
             </div>
 
-        </section>
-
-    </main>
+        </div>
 
 
-<<<<<<< HEAD
-    <!-- JAVASCRIPT -->
-    <script>
+        <div class="quick-grid">
 
-        function viewReports() {
 
-            window.location.href = "reports.html";
+            <a href="upload-report.html" class="quick-card">
 
-=======
-    <script>
+                <div class="quick-icon upload">⬆</div>
 
-        function viewReports() {
-            alert("My Reports page will open here.");
->>>>>>> 26da20250067301c85d1ebed5894432242c7e043
-        }
+                <div>
+                    <h3>Upload Report</h3>
+                    <p>Add a new medical report</p>
+                </div>
 
-    </script>
+                <span>→</span>
+
+            </a>
+
+
+            <a href="reports.html" class="quick-card">
+
+                <div class="quick-icon reports">📄</div>
+
+                <div>
+                    <h3>View Reports</h3>
+                    <p>Check your medical history</p>
+                </div>
+
+                <span>→</span>
+
+            </a>
+
+
+            <a href="qr-access.html" class="quick-card">
+
+                <div class="quick-icon qr">▦</div>
+
+                <div>
+                    <h3>QR Access</h3>
+                    <p>Share temporary medical access</p>
+                </div>
+
+                <span>→</span>
+
+            </a>
+
+
+            <a href="profile.html" class="quick-card">
+
+                <div class="quick-icon profile">👤</div>
+
+                <div>
+                    <h3>My Profile</h3>
+                    <p>View your personal details</p>
+                </div>
+
+                <span>→</span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
 
 </body>
-
 </html>

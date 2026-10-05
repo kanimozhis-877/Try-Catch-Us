@@ -1,0 +1,81 @@
+/* LIFE LINK - PATIENT REPORTS */
+
+.reports-container {
+    max-width: 1050px;
+}
+
+.report-list {
+    display: grid;
+    gap: 15px;
+}
+
+.report-card {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.report-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.report-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    background: #e5f5ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.report-details h3 {
+    color: #164462;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.report-details p {
+    color: #7a8f9f;
+    font-size: 11px;
+}
+
+.report-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.report-status {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.status-reviewed {
+    background: #e6f8ef;
+    color: #168053;
+}
+
+.status-pending {
+    background: #fff3df;
+    color: #b46b08;
+}
+
+@media (max-width: 700px) {
+    .report-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .report-actions {
+        width: 100%;
+    }
+}

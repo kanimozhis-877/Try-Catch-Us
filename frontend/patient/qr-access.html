@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Access | LIFE LINK</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f3f8fc;
+            color: #17324d;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(180deg, #06385f, #075c91, #008dbf);
+            color: white;
+            padding: 25px 18px;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 10px 28px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .logo svg {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+
+        .logo-text h2 {
+            font-size: 21px;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        .nav {
+            margin-top: 30px;
+        }
+
+        .nav a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: rgba(255,255,255,0.82);
+            padding: 14px 15px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .nav a:hover {
+            background: rgba(255,255,255,0.12);
+            color: white;
+        }
+
+        .nav a.active {
+            background: white;
+            color: #075c91;
+            font-weight: bold;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+        }
+
+        .nav-icon {
+            width: 22px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .sidebar-bottom {
+            position: absolute;
+            bottom: 25px;
+            left: 18px;
+            right: 18px;
+        }
+
+        .secure-box {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.16);
+            padding: 14px;
+            border-radius: 13px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* MAIN */
+        .main {
+            margin-left: 250px;
+            min-height: 100vh;
+            padding: 32px 38px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title h1 {
+            font-size: 29px;
+            color: #083b61;
+            margin-bottom: 6px;
+        }
+
+        .page-title p {
+            color: #6c8294;
+            font-size: 14px;
+        }
+
+        .patient-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            border: 1px solid #dceaf3;
+            padding: 9px 15px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,80,130,0.05);
+        }
+
+        .patient-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #087fc1, #00b9d7);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .patient-info strong {
+            display: block;
+            font-size: 13px;
+            color: #174361;
+        }
+
+        .patient-info span {
+            font-size: 11px;
+            color: #7b91a1;
+        }
+
+        /* QR AREA */
+        .qr-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 25px;
+            max-width: 1050px;
+        }
+
+        .qr-card {
+            background: white;
+            border: 1px solid #dceaf3;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 28px rgba(0,70,110,0.07);
+        }
+
+        .qr-card-header {
+            margin-bottom: 22px;
+        }
+
+        .qr-card-header h2 {
+            color: #103e5c;
+            font-size: 21px;
+            margin-bottom: 7px;
+        }
+
+        .qr-card-header p {
+            color: #718899;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* QR DISPLAY */
+        .qr-display {
+            background: linear-gradient(135deg, #f0faff, #ffffff);
+            border: 1px solid #d6edf7;
+            border-radius: 18px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .qr-code {
+            width: 190px;
+            height: 190px;
+            background: white;
+            border: 8px solid white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,70,110,0.12);
+            display: grid;
+            grid-template-columns: repeat(11, 1fr);
+            grid-template-rows: repeat(11, 1fr);
+            gap: 2px;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        .qr-code span {
+            background: #073b60;
+            border-radius: 1px;
+        }
+
+        .qr-code span:nth-child(3n),
+        .qr-code span:nth-child(7n) {
+            background: white;
+        }
+
+        .qr-code span:nth-child(5n) {
+            background: #073b60;
+        }
+
+        .qr-title {
+            color: #14516f;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .qr-subtitle {
+            color: #8095a4;
+            font-size: 11px;
+        }
+
+        /* TIMER */
+        .timer-box {
+            margin-top: 18px;
+            background: #fff5e3;
+            border: 1px solid #f4d9a7;
+            color: #a56305;
+            padding: 11px 18px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .timer-box span {
+            font-size: 15px;
+        }
+
+        /* BUTTON */
+        .generate-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 13px;
+            border: none;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #087fc1, #00a8ca);
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 7px 18px rgba(0,130,190,0.2);
+        }
+
+        .generate-btn:hover {
+            opacity: 0.92;
+        }
+
+        /* RIGHT INFO */
+        .info-card {
+            background: white;
+            border: 1px solid #dceaf3;
+            border-radius: 20px;
+            padding: 27px;
+            box-shadow: 0 10px 28px rgba(0,70,110,0.06);
+        }
+
+        .info-card h2 {
+            color: #103e5c;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 13px;
+            margin-bottom: 20px;
+        }
+
+        .info-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #e7f6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #087fc1;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .info-item h3 {
+            color: #184a67;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            color: #758b9b;
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+        /* PATIENT ID */
+        .patient-id {
+            margin-top: 10px;
+            padding: 16px;
+            border-radius: 13px;
+            background: #f1f8fc;
+            border: 1px solid #d9ebf4;
+        }
+
+        .patient-id span {
+            display: block;
+            color: #7b91a1;
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+
+        .patient-id strong {
+            color: #075c91;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        /* SECURITY BANNER */
+        .security-banner {
+            margin-top: 25px;
+            background: linear-gradient(135deg, #e7f7ff, #f0fdff);
+            border: 1px solid #c9eaf5;
+            border-radius: 17px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .security-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #087fc1;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .security-banner strong {
+            color: #14516f;
+            font-size: 13px;
+        }
+
+        .security-banner p {
+            color: #6e8797;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1050px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            .main {
+                margin-left: 220px;
+                padding: 28px;
+            }
+
+            .qr-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 18px;
+            }
+
+            .logo {
+                padding-bottom: 18px;
+            }
+
+            .nav {
+                margin-top: 18px;
+                display: flex;
+                overflow-x: auto;
+                gap: 7px;
+            }
+
+            .nav a {
+                margin: 0;
+                white-space: nowrap;
+            }
+
+            .sidebar-bottom {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 25px 20px;
+            }
+
+            .topbar {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .patient-badge {
+                width: 100%;
+            }
+
+            .page-title h1 {
+                font-size: 25px;
+            }
+
+            .qr-card,
+            .info-card {
+                padding: 20px;
+            }
+
+            .qr-code {
+                width: 165px;
+                height: 165px;
+            }
+
+            .security-banner {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <!-- LIFE LINK HEART + ECG -->
+            <svg viewBox="0 0 64 64" fill="none">
+
+                <path
+                    d="M32 55
+                    C29 51 10 39 7 25
+                    C4 13 12 7 21 8
+                    C27 8 31 12 32 16
+                    C33 12 37 8 43 8
+                    C52 7 60 13 57 25
+                    C54 39 35 51 32 55Z"
+                    stroke="white"
+                    stroke-width="3.5"
+                    stroke-linejoin="round"
+                />
+
+                <path
+                    d="M10 28
+                    H20
+                    L24 20
+                    L29 36
+                    L34 25
+                    L38 30
+                    H54"
+                    stroke="#69E7FF"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+
+            </svg>
+
+            <div class="logo-text">
+                <h2>LIFE LINK</h2>
+                <span>Connected Healthcare</span>
+            </div>
+
+        </div>
+
+
+        <nav class="nav">
+
+            <a href="dashboard.html">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="profile.html">
+                <span class="nav-icon">◉</span>
+                My Profile
+            </a>
+
+            <a href="reports.html">
+                <span class="nav-icon">▤</span>
+                My Reports
+            </a>
+
+            <a href="upload-report.html">
+                <span class="nav-icon">↑</span>
+                Upload Report
+            </a>
+
+            <a href="qr-access.html" class="active">
+                <span class="nav-icon">▦</span>
+                QR Access
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="secure-box">
+                🔒 <strong>Secure Health Records</strong><br>
+                Your medical information is kept private and protected.
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <div class="topbar">
+
+            <div class="page-title">
+                <h1>QR Access</h1>
+                <p>Share temporary access to your medical records securely.</p>
+            </div>
+
+
+            <div class="patient-badge">
+
+                <div class="patient-avatar">
+                    AK
+                </div>
+
+                <div class="patient-info">
+                    <strong>Arun Kumar</strong>
+                    <span>Patient ID: LL1001</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QR CONTENT -->
+        <section class="qr-layout">
+
+            <!-- QR CARD -->
+            <div class="qr-card">
+
+                <div class="qr-card-header">
+
+                    <h2>Temporary Medical Access</h2>
+
+                    <p>
+                        Generate a temporary QR code that allows an authorized
+                        healthcare professional to securely access your medical records.
+                    </p>
+
+                </div>
+
+
+                <div class="qr-display">
+
+                    <!-- DEMO QR -->
+                    <div class="qr-code">
+
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+
+                    </div>
+
+
+                    <div class="qr-title">
+                        Scan to access medical records
+                    </div>
+
+                    <div class="qr-subtitle">
+                        Patient ID: LL1001
+                    </div>
+
+
+                    <div class="timer-box">
+                        ⏱ Expires in <span id="timer">10:00</span>
+                    </div>
+
+                </div>
+
+
+                <button class="generate-btn" onclick="generateQR()">
+                    Generate New QR Code
+                </button>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+            <div class="info-card">
+
+                <h2>How QR Access Works</h2>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">1</div>
+
+                    <div>
+                        <h3>Generate QR</h3>
+
+                        <p>
+                            Create a temporary QR code from your LIFE LINK account.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">2</div>
+
+                    <div>
+                        <h3>Share With Doctor</h3>
+
+                        <p>
+                            Show the QR code to your authorized healthcare professional.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">3</div>
+
+                    <div>
+                        <h3>Temporary Access</h3>
+
+                        <p>
+                            The doctor can view relevant medical reports during the active session.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">4</div>
+
+                    <div>
+                        <h3>Automatic Expiry</h3>
+
+                        <p>
+                            Access automatically expires after the temporary access period.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="patient-id">
+
+                    <span>YOUR PATIENT ID</span>
+
+                    <strong>LL1001</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECURITY -->
+        <div class="security-banner">
+
+            <div class="security-icon">
+                🔒
+            </div>
+
+            <div>
+                <strong>Your health information stays protected.</strong>
+
+                <p>
+                    QR access is temporary and intended only for authorized healthcare access.
+                </p>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        let timeLeft = 600;
+
+        function startTimer() {
+
+            clearInterval(window.qrTimer);
+
+            timeLeft = 600;
+
+            document.getElementById("timer").textContent = "10:00";
+
+            window.qrTimer = setInterval(function () {
+
+                timeLeft--;
+
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+
+                document.getElementById("timer").textContent =
+                    String(minutes).padStart(2, "0") +
+                    ":" +
+                    String(seconds).padStart(2, "0");
+
+                if (timeLeft <= 0) {
+
+                    clearInterval(window.qrTimer);
+
+                    document.getElementById("timer").textContent = "Expired";
+
+                }
+
+            }, 1000);
+        }
+
+
+        function generateQR() {
+
+            alert("New temporary QR code generated.");
+
+            startTimer();
+
+        }
+
+
+        startTimer();
+
+    </script>
+
+</body>
+</html>

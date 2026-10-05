@@ -1,0 +1,86 @@
+/* LIFE LINK - PATIENT PROFILE */
+
+.profile-container {
+    max-width: 1050px;
+}
+
+.profile-hero {
+    background: linear-gradient(135deg, #075c91, #008dbf);
+    color: white;
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 10px 25px rgba(0,90,140,0.12);
+}
+
+.profile-avatar {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: white;
+    color: #087fc1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.profile-hero h2 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.profile-hero p {
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 22px;
+}
+
+.profile-card {
+    padding: 24px;
+}
+
+.profile-card h3 {
+    color: #103e5c;
+    font-size: 17px;
+    margin-bottom: 18px;
+}
+
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #edf3f7;
+    font-size: 12px;
+}
+
+.profile-row:last-child {
+    border-bottom: none;
+}
+
+.profile-row span {
+    color: #7b91a1;
+}
+
+.profile-row strong {
+    color: #28516b;
+}
+
+@media (max-width: 700px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-hero {
+        padding: 22px;
+    }
+}
