@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LIFE LINK | Reports</title>
+
+    <link rel="stylesheet" href="../css/reports.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">♡</div>
+
+            <div>
+                <h2>LIFE LINK</h2>
+                <p>HEALTHCARE CONNECT</p>
+            </div>
+        </div>
+
+        <div class="portal-title">
+            DOCTOR PORTAL
+        </div>
+
+        <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="patients.html" class="nav-item">
+            <span class="nav-icon">♟</span>
+            <span>Patients</span>
+        </a>
+
+        <a href="reports.html" class="nav-item active">
+            <span class="nav-icon">▤</span>
+            <span>Reports</span>
+        </a>
+
+        <a href="analysis.html" class="nav-item">
+            <span class="nav-icon">◉</span>
+            <span>Report Analysis</span>
+        </a>
+
+        <a href="qr.html" class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span>QR Access</span>
+        </a>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <div class="page-header">
+
+            <div>
+                <h1>Medical Reports</h1>
+
+                <p>
+                    View and manage patient medical reports.
+                </p>
+            </div>
+
+            <button class="upload-btn" onclick="uploadReport()">
+                + Upload Report
+            </button>
+
+        </div>
+
+
+        <!-- SEARCH AND FILTER -->
+        <div class="filter-section">
+
+            <input
+                type="text"
+                id="searchInput"
+                class="search-box"
+                placeholder="Search patient or report..."
+                onkeyup="searchReports()"
+            >
+
+            <select id="statusFilter" onchange="filterReports()">
+                <option value="all">All Reports</option>
+                <option value="review">Needs Review</option>
+                <option value="reviewed">Reviewed</option>
+            </select>
+
+        </div>
+
+
+        <!-- REPORTS -->
+        <div class="reports-container" id="reportsContainer">
+
+
+            <!-- REPORT 1 -->
+            <div
+                class="report-card"
+                data-status="review"
+                data-search="arun kumar blood test">
+
+                <div class="report-icon">
+                    +
+                </div>
+
+                <div class="report-details">
+
+                    <h3>Complete Blood Count</h3>
+
+                    <p class="patient-name">
+                        Arun Kumar
+                    </p>
+
+                    <div class="report-meta">
+
+                        <span>
+                            Patient ID: CL001
+                        </span>
+
+                        <span>
+                            02 Oct 2026
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <span class="report-status review">
+                    Needs Review
+                </span>
+
+                <button
+                    class="view-btn"
+                    onclick="viewReport('Complete Blood Count - Arun Kumar')">
+
+                    View Report
+
+                </button>
+
+            </div>
+
+
+            <!-- REPORT 2 -->
+            <div
+                class="report-card"
+                data-status="reviewed"
+                data-search="priya sharma lipid profile">
+
+                <div class="report-icon">
+                    +
+                </div>
+
+                <div class="report-details">
+
+                    <h3>Lipid Profile</h3>
+
+                    <p class="patient-name">
+                        Priya Sharma
+                    </p>
+
+                    <div class="report-meta">
+
+                        <span>
+                            Patient ID: CL002
+                        </span>
+
+                        <span>
+                            30 Sep 2026
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <span class="report-status reviewed">
+                    Reviewed
+                </span>
+
+                <button
+                    class="view-btn"
+                    onclick="viewReport('Lipid Profile - Priya Sharma')">
+
+                    View Report
+
+                </button>
+
+            </div>
+
+
+            <!-- REPORT 3 -->
+            <div
+                class="report-card"
+                data-status="review"
+                data-search="rahul mohan ecg">
+
+                <div class="report-icon">
+                    ♥
+                </div>
+
+                <div class="report-details">
+
+                    <h3>ECG Report</h3>
+
+                    <p class="patient-name">
+                        Rahul Mohan
+                    </p>
+
+                    <div class="report-meta">
+
+                        <span>
+                            Patient ID: CL003
+                        </span>
+
+                        <span>
+                            28 Sep 2026
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <span class="report-status review">
+                    Needs Review
+                </span>
+
+                <button
+                    class="view-btn"
+                    onclick="viewReport('ECG Report - Rahul Mohan')">
+
+                    View Report
+
+                </button>
+
+            </div>
+
+
+            <!-- REPORT 4 -->
+            <div
+                class="report-card"
+                data-status="reviewed"
+                data-search="sneha krishnan thyroid">
+
+                <div class="report-icon">
+                    +
+                </div>
+
+                <div class="report-details">
+
+                    <h3>Thyroid Function Test</h3>
+
+                    <p class="patient-name">
+                        Sneha Krishnan
+                    </p>
+
+                    <div class="report-meta">
+
+                        <span>
+                            Patient ID: CL004
+                        </span>
+
+                        <span>
+                            25 Sep 2026
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <span class="report-status reviewed">
+                    Reviewed
+                </span>
+
+                <button
+                    class="view-btn"
+                    onclick="viewReport('Thyroid Function Test - Sneha Krishnan')">
+
+                    View Report
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function searchReports() {
+
+            const search =
+                document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase();
+
+            const cards =
+                document
+                .querySelectorAll(".report-card");
+
+            cards.forEach(function(card) {
+
+                const text =
+                    card
+                    .getAttribute("data-search");
+
+                if (text.includes(search)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+
+            });
+
+        }
+
+
+        function filterReports() {
+
+            const filter =
+                document
+                .getElementById("statusFilter")
+                .value;
+
+            const cards =
+                document
+                .querySelectorAll(".report-card");
+
+
+            cards.forEach(function(card) {
+
+                const status =
+                    card.getAttribute("data-status");
+
+                if (
+                    filter === "all" ||
+                    filter === status
+                ) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+
+            });
+
+        }
+
+
+        function viewReport(reportName) {
+
+            alert(
+                "Opening: " + reportName
+            );
+
+        }
+
+
+        function uploadReport() {
+
+            alert(
+                "Report upload feature will be connected to the backend."
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>

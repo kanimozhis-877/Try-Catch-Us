@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f8fa;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 245px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #087f9f, #075f86);
+    color: white;
+    padding: 28px 18px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 45px;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: white;
+    color: #087f9f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo h2 {
+    font-size: 20px;
+}
+
+.logo p {
+    font-size: 10px;
+    margin-top: 3px;
+    opacity: 0.8;
+}
+
+.portal-title {
+    font-size: 12px;
+    opacity: 0.75;
+    margin: 0 0 18px 15px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 18px;
+    margin-bottom: 8px;
+    border-radius: 14px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.18);
+    border-left: 4px solid #6de8ed;
+}
+
+.nav-icon {
+    width: 20px;
+    text-align: center;
+}
+
+
+/* MAIN CONTENT */
+
+.main {
+    flex: 1;
+    padding: 38px 45px;
+    overflow-y: auto;
+}
+
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.top-section h1 {
+    font-size: 32px;
+    color: #17445b;
+}
+
+.top-section p {
+    color: #71838d;
+    margin-top: 7px;
+    font-size: 14px;
+}
+
+.search-box {
+    width: 250px;
+    padding: 13px 16px;
+    border: 1px solid #d5e1e6;
+    border-radius: 12px;
+    outline: none;
+    background: white;
+}
+
+.search-box:focus {
+    border-color: #087f9f;
+}
+
+
+/* PATIENT GRID */
+
+.patients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+
+/* PATIENT CARD */
+
+.patient-card {
+    background: white;
+    border-radius: 18px;
+    padding: 24px;
+    border: 1px solid #e0eaee;
+    box-shadow: 0 5px 18px rgba(0, 70, 90, 0.07);
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 410px;
+}
+
+
+/* PATIENT HEADER */
+
+.patient-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.patient-avatar {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+
+    border-radius: 50%;
+    background: #dff5f7;
+    color: #087f9f;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.patient-header h3 {
+    color: #17445b;
+    font-size: 18px;
+    margin: 0;
+}
+
+.patient-header p {
+    color: #7b8c94;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+
+/* PATIENT DETAILS */
+
+.patient-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 18px;
+    row-gap: 16px;
+
+    margin-bottom: 22px;
+}
+
+.info-box {
+    background: #f6fafb;
+    padding: 14px 15px;
+    border-radius: 10px;
+
+    min-height: 68px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-box span {
+    color: #87979e;
+    font-size: 11px;
+    margin-bottom: 7px;
+}
+
+.info-box strong {
+    color: #315766;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* STATUS */
+
+.status {
+    display: inline-block;
+    width: fit-content;
+
+    padding: 7px 13px;
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    margin-top: auto;
+    margin-bottom: 15px;
+}
+
+.stable {
+    background: #e4f7ed;
+    color: #208052;
+}
+
+.review {
+    background: #fff3d9;
+    color: #a16a00;
+}
+
+
+/* VIEW BUTTON */
+
+.view-btn {
+    width: 100%;
+    border: none;
+
+    padding: 13px;
+    border-radius: 10px;
+
+    background: #087f9f;
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.view-btn:hover {
+    background: #066c88;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .main {
+        padding: 25px;
+    }
+
+    .patients-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .patient-card {
+        min-height: auto;
+    }
+}

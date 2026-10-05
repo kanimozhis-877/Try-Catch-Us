@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LIFE LINK | Patients</title>
+
+    <!-- Patients CSS -->
+    <link rel="stylesheet" href="../css/patients.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                ♡
+            </div>
+
+            <div>
+                <h2>LIFE LINK</h2>
+                <p>HEALTHCARE CONNECT</p>
+            </div>
+
+        </div>
+
+
+        <div class="portal-title">
+            DOCTOR PORTAL
+        </div>
+
+
+        <a href="dashboard.html" class="nav-item">
+
+            <span class="nav-icon">
+                ⌂
+            </span>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <a href="patients.html" class="nav-item active">
+
+            <span class="nav-icon">
+                ♟
+            </span>
+
+            <span>
+                Patients
+            </span>
+
+        </a>
+
+
+        <a href="reports.html" class="nav-item">
+
+            <span class="nav-icon">
+                ▤
+            </span>
+
+            <span>
+                Reports
+            </span>
+
+        </a>
+
+
+        <a href="analysis.html" class="nav-item">
+
+            <span class="nav-icon">
+                ◉
+            </span>
+
+            <span>
+                Report Analysis
+            </span>
+
+        </a>
+
+
+        <a href="qr.html" class="nav-item">
+
+            <span class="nav-icon">
+                ▣
+            </span>
+
+            <span>
+                QR Access
+            </span>
+
+        </a>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+
+        <div class="top-section">
+
+            <div>
+
+                <h1>
+                    Patients
+                </h1>
+
+                <p>
+                    View and manage your patients' healthcare information.
+                </p>
+
+            </div>
+
+
+            <input
+                type="text"
+                id="searchInput"
+                class="search-box"
+                placeholder="Search patients..."
+                onkeyup="searchPatients()"
+            >
+
+        </div>
+
+
+
+        <!-- PATIENT CARDS -->
+
+        <div class="patients-grid" id="patientsGrid">
+
+
+            <!-- PATIENT 1 -->
+
+            <div class="patient-card">
+
+                <div class="patient-header">
+
+                    <div class="patient-avatar">
+                        AK
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Arun Kumar
+                        </h3>
+
+                        <p>
+                            Patient ID: CL001
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="patient-info">
+
+                    <div class="info-box">
+
+                        <span>
+                            Age
+                        </span>
+
+                        <strong>
+                            42 years
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Gender
+                        </span>
+
+                        <strong>
+                            Male
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Last Visit
+                        </span>
+
+                        <strong>
+                            02 Oct 2026
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Reports
+                        </span>
+
+                        <strong>
+                            4 Reports
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <span class="status stable">
+                    Stable
+                </span>
+
+
+                <button
+                    class="view-btn"
+                    onclick="viewPatient('Arun Kumar')">
+
+                    View Patient
+
+                </button>
+
+            </div>
+
+
+
+            <!-- PATIENT 2 -->
+
+            <div class="patient-card">
+
+                <div class="patient-header">
+
+                    <div class="patient-avatar">
+                        PS
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Priya Sharma
+                        </h3>
+
+                        <p>
+                            Patient ID: CL002
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="patient-info">
+
+                    <div class="info-box">
+
+                        <span>
+                            Age
+                        </span>
+
+                        <strong>
+                            35 years
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Gender
+                        </span>
+
+                        <strong>
+                            Female
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Last Visit
+                        </span>
+
+                        <strong>
+                            30 Sep 2026
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Reports
+                        </span>
+
+                        <strong>
+                            3 Reports
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <span class="status review">
+                    Needs Review
+                </span>
+
+
+                <button
+                    class="view-btn"
+                    onclick="viewPatient('Priya Sharma')">
+
+                    View Patient
+
+                </button>
+
+            </div>
+
+
+
+            <!-- PATIENT 3 -->
+
+            <div class="patient-card">
+
+                <div class="patient-header">
+
+                    <div class="patient-avatar">
+                        RM
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Rahul Mohan
+                        </h3>
+
+                        <p>
+                            Patient ID: CL003
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="patient-info">
+
+                    <div class="info-box">
+
+                        <span>
+                            Age
+                        </span>
+
+                        <strong>
+                            51 years
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Gender
+                        </span>
+
+                        <strong>
+                            Male
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Last Visit
+                        </span>
+
+                        <strong>
+                            28 Sep 2026
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Reports
+                        </span>
+
+                        <strong>
+                            5 Reports
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <span class="status stable">
+                    Stable
+                </span>
+
+
+                <button
+                    class="view-btn"
+                    onclick="viewPatient('Rahul Mohan')">
+
+                    View Patient
+
+                </button>
+
+            </div>
+
+
+
+            <!-- PATIENT 4 -->
+
+            <div class="patient-card">
+
+                <div class="patient-header">
+
+                    <div class="patient-avatar">
+                        SK
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Sneha Krishnan
+                        </h3>
+
+                        <p>
+                            Patient ID: CL004
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="patient-info">
+
+                    <div class="info-box">
+
+                        <span>
+                            Age
+                        </span>
+
+                        <strong>
+                            29 years
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Gender
+                        </span>
+
+                        <strong>
+                            Female
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Last Visit
+                        </span>
+
+                        <strong>
+                            25 Sep 2026
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Reports
+                        </span>
+
+                        <strong>
+                            2 Reports
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <span class="status review">
+                    Needs Review
+                </span>
+
+
+                <button
+                    class="view-btn"
+                    onclick="viewPatient('Sneha Krishnan')">
+
+                    View Patient
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function searchPatients() {
+
+            const input =
+                document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase();
+
+            const cards =
+                document
+                .querySelectorAll(".patient-card");
+
+
+            cards.forEach(function(card) {
+
+                const name =
+                    card
+                    .querySelector("h3")
+                    .innerText
+                    .toLowerCase();
+
+
+                if (name.includes(input)) {
+
+                    card.style.display = "flex";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        function viewPatient(name) {
+
+            alert(
+                "Opening patient profile for " + name
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

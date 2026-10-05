@@ -1,0 +1,267 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFE LINK | Report Analysis</title>
+    <link rel="stylesheet" href="../css/analysis.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">♡</div>
+            <div>
+                <h2>LIFE LINK</h2>
+                <p>HEALTHCARE CONNECT</p>
+            </div>
+        </div>
+
+        <div class="portal-title">DOCTOR PORTAL</div>
+
+        <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="patients.html" class="nav-item">
+            <span class="nav-icon">♟</span>
+            <span>Patients</span>
+        </a>
+
+        <a href="reports.html" class="nav-item">
+            <span class="nav-icon">▤</span>
+            <span>Reports</span>
+        </a>
+
+        <a href="analysis.html" class="nav-item active">
+            <span class="nav-icon">◉</span>
+            <span>Report Analysis</span>
+        </a>
+
+        <a href="qr.html" class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span>QR Access</span>
+        </a>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <div class="page-header">
+            <div>
+                <h1>Report Analysis</h1>
+                <p>Compare patient reports and review important changes.</p>
+            </div>
+        </div>
+
+
+        <!-- Patient Selection -->
+        <section class="selection-card">
+
+            <div class="form-group">
+                <label for="patientSelect">Select Patient</label>
+
+                <select id="patientSelect" onchange="loadAnalysis()">
+                    <option value="">Select a patient</option>
+                    <option value="arun">Arun Kumar - CL001</option>
+                    <option value="priya">Priya Sharma - CL002</option>
+                    <option value="rahul">Rahul Mohan - CL003</option>
+                    <option value="sneha">Sneha Krishnan - CL004</option>
+                </select>
+            </div>
+
+            <div class="analysis-status">
+                <span class="status-dot"></span>
+                Analysis Ready
+            </div>
+
+        </section>
+
+
+        <!-- Report Comparison -->
+        <section class="comparison-section">
+
+            <div class="report-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <span class="panel-label">PREVIOUS REPORT</span>
+                        <h2>Complete Blood Count</h2>
+                    </div>
+
+                    <span class="date-badge">15 Sep 2026</span>
+                </div>
+
+                <div class="report-values">
+
+                    <div class="value-row">
+                        <span>Hemoglobin</span>
+                        <strong>13.2 g/dL</strong>
+                    </div>
+
+                    <div class="value-row">
+                        <span>WBC Count</span>
+                        <strong>7,200 /µL</strong>
+                    </div>
+
+                    <div class="value-row">
+                        <span>Platelets</span>
+                        <strong>2.4 lakh /µL</strong>
+                    </div>
+
+                    <div class="value-row">
+                        <span>RBC Count</span>
+                        <strong>4.8 million /µL</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="comparison-arrow">
+                →
+            </div>
+
+
+            <div class="report-panel current">
+
+                <div class="panel-header">
+                    <div>
+                        <span class="panel-label">CURRENT REPORT</span>
+                        <h2>Complete Blood Count</h2>
+                    </div>
+
+                    <span class="date-badge current-date">02 Oct 2026</span>
+                </div>
+
+                <div class="report-values">
+
+                    <div class="value-row">
+                        <span>Hemoglobin</span>
+                        <strong>12.6 g/dL</strong>
+                    </div>
+
+                    <div class="value-row">
+                        <span>WBC Count</span>
+                        <strong>8,100 /µL</strong>
+                    </div>
+
+                    <div class="value-row">
+                        <span>Platelets</span>
+                        <strong>2.5 lakh /µL</strong>
+                    </div>
+
+                    <div class="value-row">
+                        <span>RBC Count</span>
+                        <strong>4.6 million /µL</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Change Summary -->
+        <section class="summary-card">
+
+            <div class="summary-header">
+                <div>
+                    <h2>Change Summary</h2>
+                    <p>Key differences between the selected reports.</p>
+                </div>
+
+                <span class="review-badge">Needs Review</span>
+            </div>
+
+
+            <div class="change-grid">
+
+                <div class="change-item">
+                    <span class="change-name">Hemoglobin</span>
+                    <span class="change-value decrease">↓ 0.6 g/dL</span>
+                    <p>Lower than previous report</p>
+                </div>
+
+                <div class="change-item">
+                    <span class="change-name">WBC Count</span>
+                    <span class="change-value increase">↑ 900 /µL</span>
+                    <p>Higher than previous report</p>
+                </div>
+
+                <div class="change-item">
+                    <span class="change-name">Platelets</span>
+                    <span class="change-value stable">→ Stable</span>
+                    <p>Small variation observed</p>
+                </div>
+
+                <div class="change-item">
+                    <span class="change-name">RBC Count</span>
+                    <span class="change-value decrease">↓ 0.2 million</span>
+                    <p>Lower than previous report</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Doctor Review -->
+        <section class="review-card">
+
+            <div class="review-icon">✓</div>
+
+            <div class="review-content">
+                <h2>Doctor Review</h2>
+                <p>
+                    Review the report changes and decide the appropriate next step
+                    based on the patient's clinical context.
+                </p>
+            </div>
+
+            <button class="review-btn" onclick="reviewReport()">
+                Mark as Reviewed
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function loadAnalysis() {
+
+            const patient = document.getElementById("patientSelect").value;
+
+            if (patient === "") {
+                return;
+            }
+
+            document.querySelector(".analysis-status").innerHTML =
+                '<span class="status-dot"></span> Analysis Ready';
+        }
+
+
+        function reviewReport() {
+
+            const badge = document.querySelector(".review-badge");
+
+            badge.textContent = "Reviewed";
+            badge.classList.add("reviewed");
+
+            alert("Report marked as reviewed.");
+        }
+
+    </script>
+
+</body>
+</html>
