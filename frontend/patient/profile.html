@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LIFE LINK | My Profile</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f3f8fc;
+            color: #183b56;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           MAIN LAYOUT
+        ========================= */
+
+        .layout {
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+
+            width: 250px;
+
+            padding: 25px 18px;
+
+            background: linear-gradient(
+                160deg,
+                #043b68,
+                #075d91 55%,
+                #009bc4
+            );
+
+            color: white;
+
+            z-index: 10;
+
+            box-shadow:
+                8px 0 30px rgba(0, 65, 100, 0.14);
+        }
+
+
+        /* BRAND */
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 4px 8px 30px;
+        }
+
+        .brand-logo {
+            width: 46px;
+            height: 46px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: rgba(255,255,255,0.14);
+
+            border: 1px solid rgba(255,255,255,0.24);
+        }
+
+        .brand-logo svg {
+            width: 34px;
+            height: 34px;
+        }
+
+        .brand-name {
+            color: white;
+
+            font-size: 19px;
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+        }
+
+        .brand-subtitle {
+            margin-top: 4px;
+
+            color: rgba(255,255,255,0.60);
+
+            font-size: 9px;
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* NAV */
+
+        .nav-title {
+            padding: 0 12px;
+
+            margin-bottom: 10px;
+
+            color: rgba(255,255,255,0.55);
+
+            font-size: 10px;
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+        .nav-item {
+            min-height: 47px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 0 13px;
+
+            border-radius: 12px;
+
+            color: rgba(255,255,255,0.78);
+
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.10);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: rgba(255,255,255,0.17);
+
+            color: white;
+
+            box-shadow:
+                inset 3px 0 #68e4ff;
+        }
+
+        .nav-icon {
+            width: 24px;
+
+            flex-shrink: 0;
+
+            text-align: center;
+
+            font-size: 17px;
+        }
+
+
+        /* SIDEBAR BOTTOM */
+
+        .sidebar-bottom {
+            position: absolute;
+
+            left: 18px;
+            right: 18px;
+            bottom: 22px;
+        }
+
+        .patient-mini {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 12px;
+
+            margin-bottom: 10px;
+
+            border-radius: 14px;
+
+            background: rgba(255,255,255,0.10);
+        }
+
+        .patient-avatar-small {
+            width: 38px;
+            height: 38px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #d8f5ff;
+            color: #087da8;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .patient-mini-info {
+            min-width: 0;
+        }
+
+        .patient-mini-info strong {
+            display: block;
+
+            color: white;
+
+            font-size: 12px;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .patient-mini-info span {
+            display: block;
+
+            margin-top: 3px;
+
+            color: rgba(255,255,255,0.58);
+
+            font-size: 9px;
+        }
+
+        .logout {
+            width: 100%;
+            height: 40px;
+
+            border: 1px solid rgba(255,255,255,0.20);
+
+            border-radius: 10px;
+
+            background: transparent;
+
+            color: rgba(255,255,255,0.75);
+
+            cursor: pointer;
+
+            font-size: 12px;
+        }
+
+        .logout:hover {
+            background: rgba(255,255,255,0.10);
+            color: white;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .main {
+            min-height: 100vh;
+
+            margin-left: 250px;
+
+            padding: 30px 35px 45px;
+        }
+
+
+        /* TOP BAR */
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+        }
+
+        .page-title h1 {
+            color: #123953;
+
+            font-size: 28px;
+            line-height: 1.2;
+
+            margin-bottom: 6px;
+        }
+
+        .page-title p {
+            color: #7891a2;
+
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .profile-top {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 5px 13px 5px 5px;
+
+            flex-shrink: 0;
+
+            background: white;
+
+            border: 1px solid #d9e8ef;
+
+            border-radius: 13px;
+        }
+
+        .profile-top-avatar {
+            width: 35px;
+            height: 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #d8f5ff;
+            color: #087da8;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .profile-top span {
+            color: #31536d;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           PROFILE HERO
+        ========================= */
+
+        .profile-hero {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            min-height: 135px;
+
+            padding: 25px 30px;
+
+            margin-bottom: 20px;
+
+            overflow: hidden;
+
+            border-radius: 21px;
+
+            background: linear-gradient(
+                120deg,
+                #075185,
+                #008fbd
+            );
+
+            color: white;
+
+            box-shadow:
+                0 15px 35px rgba(0,100,150,0.14);
+        }
+
+        .profile-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 240px;
+            height: 240px;
+
+            right: -90px;
+            top: -120px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.08);
+        }
+
+        .hero-left {
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .hero-avatar {
+            width: 78px;
+            height: 78px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 20px;
+
+            background: rgba(255,255,255,0.15);
+
+            border: 1px solid rgba(255,255,255,0.25);
+
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .hero-info h2 {
+            color: white;
+
+            font-size: 24px;
+
+            margin-bottom: 7px;
+        }
+
+        .hero-info p {
+            color: rgba(255,255,255,0.74);
+
+            font-size: 12px;
+        }
+
+        .hero-status {
+            position: relative;
+
+            z-index: 2;
+
+            flex-shrink: 0;
+
+            padding: 8px 14px;
+
+            border-radius: 20px;
+
+            background: rgba(255,255,255,0.15);
+
+            border: 1px solid rgba(255,255,255,0.22);
+
+            color: white;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           CONTENT GRID
+        ========================= */
+
+        .content-grid {
+            display: grid;
+
+            grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+
+            gap: 20px;
+
+            margin-bottom: 20px;
+        }
+
+        .card {
+            min-width: 0;
+
+            background: white;
+
+            border: 1px solid #dceaf0;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 8px 25px rgba(30,90,120,0.05);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 18px;
+        }
+
+        .card-header h3 {
+            color: #173b57;
+
+            font-size: 16px;
+        }
+
+        .card-header-icon {
+            width: 36px;
+            height: 36px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #e1f5ff;
+
+            color: #0788b8;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           PERSONAL INFORMATION
+        ========================= */
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 12px;
+        }
+
+        .info-item {
+            min-width: 0;
+
+            padding: 14px;
+
+            border-radius: 11px;
+
+            background: #f7fbfd;
+
+            border: 1px solid #e4eff3;
+        }
+
+        .info-item span {
+            display: block;
+
+            color: #8b9fa9;
+
+            font-size: 9px;
+
+            margin-bottom: 6px;
+        }
+
+        .info-item strong {
+            display: block;
+
+            color: #34566d;
+
+            font-size: 12px;
+
+            line-height: 1.4;
+
+            word-break: break-word;
+        }
+
+
+        /* =========================
+           HEALTH SUMMARY
+        ========================= */
+
+        .health-list {
+            display: flex;
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+        .health-item {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            min-height: 62px;
+
+            padding: 10px 12px;
+
+            border-radius: 12px;
+
+            background: #f8fcfe;
+
+            border: 1px solid #e4eff3;
+        }
+
+        .health-icon {
+            width: 40px;
+            height: 40px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: #e1f5ff;
+
+            color: #0788b8;
+
+            font-size: 17px;
+        }
+
+        .health-info {
+            min-width: 0;
+        }
+
+        .health-info strong {
+            display: block;
+
+            color: #34566d;
+
+            font-size: 11px;
+
+            margin-bottom: 3px;
+        }
+
+        .health-info span {
+            color: #94a5af;
+
+            font-size: 9px;
+
+            line-height: 1.4;
+        }
+
+
+        /* =========================
+           EMERGENCY
+        ========================= */
+
+        .emergency-card {
+            background: white;
+
+            border: 1px solid #dceaf0;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 8px 25px rgba(30,90,120,0.05);
+        }
+
+        .emergency-header {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 17px;
+        }
+
+        .emergency-icon {
+            width: 40px;
+            height: 40px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: #fff0f0;
+
+            color: #e25555;
+
+            font-size: 18px;
+        }
+
+        .emergency-header h3 {
+            color: #173b57;
+
+            font-size: 16px;
+        }
+
+        .emergency-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 12px;
+        }
+
+        .emergency-item {
+            min-width: 0;
+
+            padding: 14px;
+
+            border-radius: 11px;
+
+            background: #fafcfd;
+
+            border: 1px solid #e4eff3;
+        }
+
+        .emergency-item span {
+            display: block;
+
+            color: #8b9fa9;
+
+            font-size: 9px;
+
+            margin-bottom: 6px;
+        }
+
+        .emergency-item strong {
+            display: block;
+
+            color: #34566d;
+
+            font-size: 11px;
+
+            line-height: 1.4;
+
+            word-break: break-word;
+        }
+
+
+        /* =========================
+           ACTION BUTTONS
+        ========================= */
+
+        .actions {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 42px;
+
+            padding: 0 18px;
+
+            border-radius: 9px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            transition: 0.2s;
+        }
+
+        .primary {
+            background: #078fbe;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #056f98;
+        }
+
+        .secondary {
+            background: #eaf8fc;
+
+            color: #0788b8;
+
+            border: 1px solid #bfe1eb;
+        }
+
+        .secondary:hover {
+            background: #d8f2fa;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1100px) {
+
+            .sidebar {
+                width: 220px;
+            }
+
+            .main {
+                margin-left: 220px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 800px) {
+
+            .layout {
+                display: block;
+            }
+
+            .sidebar {
+                position: relative;
+
+                width: 100%;
+                min-height: auto;
+
+                padding: 15px;
+            }
+
+            .brand {
+                padding-bottom: 15px;
+            }
+
+            .nav-title,
+            .sidebar-bottom {
+                display: none;
+            }
+
+            .nav-menu {
+                flex-direction: row;
+
+                overflow-x: auto;
+
+                padding-bottom: 5px;
+            }
+
+            .nav-item {
+                flex: 0 0 auto;
+            }
+
+            .main {
+                width: 100%;
+
+                margin-left: 0;
+
+                padding: 22px 17px 35px;
+            }
+
+            .profile-hero {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .emergency-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .topbar {
+                align-items: flex-start;
+            }
+
+            .profile-top {
+                display: none;
+            }
+
+            .page-title h1 {
+                font-size: 23px;
+            }
+
+            .profile-hero {
+                padding: 22px;
+            }
+
+            .hero-left {
+                gap: 13px;
+            }
+
+            .hero-avatar {
+                width: 65px;
+                height: 65px;
+
+                border-radius: 16px;
+
+                font-size: 20px;
+            }
+
+            .hero-info h2 {
+                font-size: 20px;
+            }
+
+            .hero-info p {
+                line-height: 1.6;
+            }
+
+            .card,
+            .emergency-card {
+                padding: 17px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .action-btn {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="layout">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+
+                <svg viewBox="0 0 100 100" fill="none">
+
+                    <!-- HEART -->
+
+                    <path
+                        d="M50 82
+                        C45 77 18 61 18 37
+                        C18 23 27 14 39 14
+                        C46 14 50 19 50 25
+                        C50 19 54 14 61 14
+                        C73 14 82 23 82 37
+                        C82 61 55 77 50 82Z"
+                        stroke="white"
+                        stroke-width="5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+
+                    <!-- ECG -->
+
+                    <path
+                        d="M25 47
+                        H38
+                        L44 35
+                        L50 61
+                        L57 42
+                        L62 50
+                        H76"
+                        stroke="#69E7FF"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+
+                </svg>
+
+            </div>
+
+            <div>
+
+                <div class="brand-name">
+                    LIFE LINK
+                </div>
+
+                <div class="brand-subtitle">
+                    Healthcare Connect
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="nav-title">
+            Patient Portal
+        </div>
+
+
+        <nav class="nav-menu">
+
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="profile.html" class="nav-item active">
+                <span class="nav-icon">♙</span>
+                <span>My Profile</span>
+            </a>
+
+            <a href="reports.html" class="nav-item">
+                <span class="nav-icon">▤</span>
+                <span>My Reports</span>
+            </a>
+
+            <a href="upload-report.html" class="nav-item">
+                <span class="nav-icon">↑</span>
+                <span>Upload Report</span>
+            </a>
+
+            <a href="qr-access.html" class="nav-item">
+                <span class="nav-icon">▦</span>
+                <span>QR Access</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="patient-mini">
+
+                <div class="patient-avatar-small">
+                    AK
+                </div>
+
+                <div class="patient-mini-info">
+
+                    <strong>
+                        Arun Kumar
+                    </strong>
+
+                    <span>

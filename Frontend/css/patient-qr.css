@@ -1,0 +1,95 @@
+/* LIFE LINK - PATIENT QR ACCESS */
+
+.qr-container {
+    max-width: 1050px;
+}
+
+.qr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.qr-card {
+    padding: 28px;
+    text-align: center;
+}
+
+.qr-box {
+    width: 190px;
+    height: 190px;
+    margin: 20px auto;
+    background: white;
+    border: 8px solid white;
+    box-shadow: 0 6px 20px rgba(0,70,110,0.12);
+}
+
+.qr-title {
+    color: #14516f;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.qr-subtitle {
+    color: #8095a4;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.qr-timer {
+    display: inline-block;
+    margin-top: 17px;
+    padding: 9px 17px;
+    border-radius: 22px;
+    background: #fff4df;
+    color: #a56305;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.qr-info {
+    padding: 27px;
+}
+
+.qr-info h2 {
+    color: #103e5c;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.qr-step {
+    display: flex;
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.qr-number {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: #e5f6ff;
+    color: #087fc1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.qr-step h3 {
+    color: #184a67;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.qr-step p {
+    color: #758b9b;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+@media (max-width: 850px) {
+    .qr-grid {
+        grid-template-columns: 1fr;
+    }
+}

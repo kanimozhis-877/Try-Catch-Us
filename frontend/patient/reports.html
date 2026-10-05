@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reports | LIFE LINK</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f3f8fc;
+            color: #17324d;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(180deg, #06385f, #075c91, #008dbf);
+            color: white;
+            padding: 25px 18px;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 10px 28px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .logo svg {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+
+        .logo-text h2 {
+            font-size: 21px;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        .nav {
+            margin-top: 30px;
+        }
+
+        .nav a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: rgba(255,255,255,0.82);
+            padding: 14px 15px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .nav a:hover {
+            background: rgba(255,255,255,0.12);
+            color: white;
+        }
+
+        .nav a.active {
+            background: white;
+            color: #075c91;
+            font-weight: bold;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+        }
+
+        .nav-icon {
+            width: 22px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .sidebar-bottom {
+            position: absolute;
+            bottom: 25px;
+            left: 18px;
+            right: 18px;
+        }
+
+        .secure-box {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.16);
+            padding: 14px;
+            border-radius: 13px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* MAIN */
+        .main {
+            margin-left: 250px;
+            min-height: 100vh;
+            padding: 32px 38px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .page-title h1 {
+            font-size: 29px;
+            color: #083b61;
+            margin-bottom: 6px;
+        }
+
+        .page-title p {
+            color: #6c8294;
+            font-size: 14px;
+        }
+
+        .patient-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            border: 1px solid #dceaf3;
+            padding: 9px 15px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,80,130,0.05);
+        }
+
+        .patient-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #087fc1, #00b9d7);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .patient-info strong {
+            display: block;
+            font-size: 13px;
+            color: #174361;
+        }
+
+        .patient-info span {
+            font-size: 11px;
+            color: #7b91a1;
+        }
+
+        /* SUMMARY */
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .summary-card {
+            background: white;
+            border: 1px solid #dceaf3;
+            border-radius: 17px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 7px 20px rgba(0,70,110,0.05);
+        }
+
+        .summary-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 21px;
+        }
+
+        .blue {
+            background: #e5f4ff;
+        }
+
+        .green {
+            background: #e7f9f1;
+        }
+
+        .purple {
+            background: #f0ebff;
+        }
+
+        .summary-card h3 {
+            font-size: 22px;
+            color: #123f60;
+        }
+
+        .summary-card p {
+            font-size: 12px;
+            color: #7b91a1;
+            margin-top: 3px;
+        }
+
+        /* REPORT SECTION */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 20px;
+            color: #103e5c;
+        }
+
+        .upload-btn {
+            text-decoration: none;
+            background: linear-gradient(135deg, #087fc1, #00a8ca);
+            color: white;
+            padding: 11px 17px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: bold;
+            box-shadow: 0 6px 15px rgba(0,130,190,0.2);
+        }
+
+        .upload-btn:hover {
+            opacity: 0.92;
+        }
+
+        /* REPORT CARDS */
+        .reports-container {
+            display: grid;
+            gap: 15px;
+        }
+
+        .report-card {
+            background: white;
+            border: 1px solid #dceaf3;
+            border-radius: 17px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 7px 20px rgba(0,70,110,0.045);
+            transition: 0.25s;
+        }
+
+        .report-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,70,110,0.09);
+        }
+
+        .report-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .report-icon {
+            width: 53px;
+            height: 53px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #e4f5ff, #d7f6fb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .report-details h3 {
+            color: #164462;
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .report-details p {
+            color: #7a8f9f;
+            font-size: 12px;
+        }
+
+        .report-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .reviewed {
+            background: #e6f8ef;
+            color: #168053;
+        }
+
+        .pending {
+            background: #fff3df;
+            color: #b46b08;
+        }
+
+        .report-actions {
+            display: flex;
+            gap: 9px;
+        }
+
+        .action-btn {
+            text-decoration: none;
+            padding: 9px 13px;
+            border-radius: 9px;
+            font-size: 11px;
+            font-weight: bold;
+            border: 1px solid #d7e7f0;
+            color: #17638b;
+            background: #f8fcff;
+        }
+
+        .action-btn:hover {
+            background: #e9f7ff;
+        }
+
+        .action-btn.primary {
+            color: white;
+            background: #087fc1;
+            border-color: #087fc1;
+        }
+
+        /* INFO BANNER */
+        .info-banner {
+            margin-top: 24px;
+            background: linear-gradient(135deg, #e6f6ff, #effcff);
+            border: 1px solid #c8e8f5;
+            border-radius: 16px;
+            padding: 17px 20px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .info-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #087fc1;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .info-banner strong {
+            color: #14516f;
+            font-size: 13px;
+        }
+
+        .info-banner p {
+            color: #6b8596;
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1100px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            .main {
+                margin-left: 220px;
+                padding: 28px;
+            }
+
+            .summary {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 18px;
+            }
+
+            .logo {
+                padding-bottom: 18px;
+            }
+
+            .nav {
+                margin-top: 18px;
+                display: flex;
+                overflow-x: auto;
+                gap: 7px;
+            }
+
+            .nav a {
+                margin: 0;
+                white-space: nowrap;
+            }
+
+            .sidebar-bottom {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 25px 20px;
+            }
+
+            .topbar {
+                gap: 15px;
+            }
+
+            .summary {
+                grid-template-columns: 1fr;
+            }
+
+            .report-card {
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .report-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .page-title h1 {
+                font-size: 25px;
+            }
+
+            .patient-badge {
+                width: 100%;
+            }
+
+            .section-header {
+                align-items: flex-start;
+                gap: 10px;
+                flex-direction: column;
+            }
+
+            .report-card {
+                flex-direction: column;
+            }
+
+            .report-left {
+                width: 100%;
+            }
+
+            .report-actions {
+                width: 100%;
+                flex-direction: row;
+            }
+
+            .action-btn {
+                flex: 1;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <!-- LIFE LINK HEART + ECG LOGO -->
+            <svg viewBox="0 0 64 64" fill="none">
+                <path
+                    d="M32 55
+                    C29 51 10 39 7 25
+                    C4 13 12 7 21 8
+                    C27 8 31 12 32 16
+                    C33 12 37 8 43 8
+                    C52 7 60 13 57 25
+                    C54 39 35 51 32 55Z"
+                    stroke="white"
+                    stroke-width="3.5"
+                    stroke-linejoin="round"
+                />
+
+                <path
+                    d="M10 28
+                    H20
+                    L24 20
+                    L29 36
+                    L34 25
+                    L38 30
+                    H54"
+                    stroke="#69E7FF"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
+
+            <div class="logo-text">
+                <h2>LIFE LINK</h2>
+                <span>Connected Healthcare</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+
+            <a href="dashboard.html">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="profile.html">
+                <span class="nav-icon">◉</span>
+                My Profile
+            </a>
+
+            <a href="reports.html" class="active">
+                <span class="nav-icon">▤</span>
+                My Reports
+            </a>
+
+            <a href="upload-report.html">
+                <span class="nav-icon">↑</span>
+                Upload Report
+            </a>
+
+            <a href="qr-access.html">
+                <span class="nav-icon">▦</span>
+                QR Access
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="secure-box">
+                🔒 <strong>Secure Health Records</strong><br>
+                Your medical information is kept private and protected.
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <div class="topbar">
+
+            <div class="page-title">
+                <h1>My Reports</h1>
+                <p>View and manage your medical reports securely.</p>
+            </div>
+
+            <div class="patient-badge">
+                <div class="patient-avatar">AK</div>
+
+                <div class="patient-info">
+                    <strong>Arun Kumar</strong>
+                    <span>Patient ID: LL1001</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- SUMMARY -->
+        <section class="summary">
+
+            <div class="summary-card">
+                <div class="summary-icon blue">📄</div>
+
+                <div>
+                    <h3>4</h3>
+                    <p>Total Reports</p>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon green">✓</div>
+
+                <div>
+                    <h3>3</h3>
+                    <p>Doctor Reviewed</p>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon purple">◷</div>
+
+                <div>
+                    <h3>1</h3>
+                    <p>Awaiting Review</p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- REPORTS -->
+        <div class="section-header">
+
+            <h2>Recent Reports</h2>
+
+            <a href="upload-report.html" class="upload-btn">
+                + Upload New Report
+            </a>
+
+        </div>
+
+
+        <section class="reports-container">
+
+            <!-- REPORT 1 -->
+            <div class="report-card">
+
+                <div class="report-left">
+
+                    <div class="report-icon">🩸</div>
+
+                    <div class="report-details">
+
+                        <h3>Complete Blood Count</h3>
+
+                        <p>Uploaded on 28 Sep 2026 · Blood Test</p>
+
+                        <div class="report-meta">
+                            <span class="status reviewed">
+                                ✓ Doctor Reviewed
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="report-actions">
+                    <a href="#" class="action-btn primary">View Report</a>
+                    <a href="#" class="action-btn">Download</a>
+                </div>
+
+            </div>
+
+
+            <!-- REPORT 2 -->
+            <div class="report-card">
+
+                <div class="report-left">
+
+                    <div class="report-icon">❤️</div>
+
+                    <div class="report-details">
+
+                        <h3>ECG Report</h3>
+
+                        <p>Uploaded on 22 Sep 2026 · Cardiology</p>
+
+                        <div class="report-meta">
+                            <span class="status reviewed">
+                                ✓ Doctor Reviewed
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="report-actions">
+                    <a href="#" class="action-btn primary">View Report</a>
+                    <a href="#" class="action-btn">Download</a>
+                </div>
+
+            </div>
+
+
+            <!-- REPORT 3 -->
+            <div class="report-card">
+
+                <div class="report-left">
+
+                    <div class="report-icon">🧪</div>
+
+                    <div class="report-details">
+
+                        <h3>Lipid Profile</h3>
+
+                        <p>Uploaded on 15 Sep 2026 · Blood Test</p>
+
+                        <div class="report-meta">
+                            <span class="status reviewed">
+                                ✓ Doctor Reviewed
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="report-actions">
+                    <a href="#" class="action-btn primary">View Report</a>
+                    <a href="#" class="action-btn">Download</a>
+                </div>
+
+            </div>
+
+
+            <!-- REPORT 4 -->
+            <div class="report-card">
+
+                <div class="report-left">
+
+                    <div class="report-icon">📋</div>
+
+                    <div class="report-details">
+
+                        <h3>Health Checkup Report</h3>
+
+                        <p>Uploaded on 05 Sep 2026 · General Checkup</p>
+
+                        <div class="report-meta">
+                            <span class="status pending">
+                                ◷ Awaiting Review
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="report-actions">
+                    <a href="#" class="action-btn primary">View Report</a>
+                    <a href="#" class="action-btn">Download</a>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INFO -->
+        <div class="info-banner">
+
+            <div class="info-icon">i</div>
+
+            <div>
+                <strong>Your reports are securely stored.</strong>
+                <p>
+                    Only you and authorized healthcare professionals can access your medical records.
+                </p>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
