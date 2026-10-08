@@ -1,2999 +1,923 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>LIFELINK — Connected Healthcare</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-
-    /* =========================================
-       GLOBAL
-    ========================================= */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Inter", sans-serif;
-      background: #f7fafc;
-      color: #0f172a;
-      overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    :root {
-      --primary: #2563eb;
-      --secondary: #0ea5e9;
-      --navy: #0f2742;
-      --background: #f7fafc;
-      --white: #ffffff;
-      --border: #e2e8f0;
-      --text: #0f172a;
-      --muted: #64748b;
-      --light-blue: #eff6ff;
-      --cyan-light: #ecfeff;
-      --success: #16a34a;
-    }
-
-    /* =========================================
-       PAGE
-    ========================================= */
-
-    .page {
-      min-height: 100vh;
+    <meta charset="UTF-8">
 
-      background:
-        radial-gradient(
-          circle at 80% 8%,
-          rgba(37, 99, 235, 0.07),
-          transparent 27%
-        ),
-        #f7fafc;
-    }
-
-    /* =========================================
-       NAVBAR
-    ========================================= */
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .navbar-wrapper {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 16px 5%;
-    }
+    <title>LIFE LINK | Better Context. Better Care.</title>
 
-    .navbar {
-      max-width: 1250px;
-      min-height: 68px;
+    <style>
 
-      margin: auto;
-      padding: 10px 18px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
 
-      background: rgba(255,255,255,0.95);
+            min-height: 100vh;
 
-      border: 1px solid var(--border);
-      border-radius: 18px;
+            color: #092b4a;
 
-      box-shadow:
-        0 8px 30px rgba(15,39,66,0.07);
+            background:
+                radial-gradient(
+                    circle at 10% 15%,
+                    rgba(0, 190, 255, 0.22),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 90% 85%,
+                    rgba(48, 88, 220, 0.20),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #e5f8ff,
+                    #f7fbff 48%,
+                    #e8efff
+                );
+        }
 
-      backdrop-filter: blur(15px);
-    }
+        /* ================= HEADER ================= */
 
-    /* BRAND */
+        header {
+            width: 100%;
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
+            height: 78px;
 
-    .brand-icon {
-      width: 42px;
-      height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-      border-radius: 12px;
+            padding: 0 7%;
 
-      background: var(--light-blue);
-      color: var(--primary);
+            background: rgba(255, 255, 255, 0.94);
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+            border-bottom: 1px solid #d6e8f1;
 
-      position: relative;
-    }
+            position: relative;
+            z-index: 10;
+        }
 
-    .brand-icon::after {
-      content: "+";
+        .brand {
+            display: flex;
+            align-items: center;
 
-      position: absolute;
+            gap: 12px;
 
-      font-size: 16px;
-      font-weight: 800;
+            color: #0b2d4d;
 
-      color: var(--primary);
-    }
+            font-size: 22px;
 
-    .brand-name {
-      color: var(--navy);
+            font-weight: 800;
 
-      font-size: 19px;
-      font-weight: 800;
+            letter-spacing: 1px;
+        }
 
-      letter-spacing: 0.6px;
-    }
+        .brand-logo {
+            width: 42px;
+            height: 42px;
 
-    .brand-tagline {
-      margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-      color: #94a3b8;
+            border-radius: 12px;
 
-      font-size: 9px;
-      font-weight: 500;
-    }
+            background:
+                linear-gradient(
+                    135deg,
+                    #008fc4,
+                    #0065aa
+                );
 
-    /* NAV LINKS */
+            box-shadow:
+                0 7px 18px rgba(0, 125, 180, 0.25);
+        }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
+        .brand-logo svg {
+            width: 31px;
+            height: 31px;
+        }
 
-    .nav-links a {
-      color: var(--muted);
+        .brand span {
+            color: #008fc4;
+        }
 
-      font-size: 12px;
-      font-weight: 600;
+        .language {
+            padding: 9px 13px;
 
-      transition: 0.2s ease;
-    }
+            border: 1px solid #c6dce8;
 
-    .nav-links a:hover {
-      color: var(--primary);
-    }
+            border-radius: 9px;
 
-    /* NAV ACTIONS */
+            background: white;
 
-    .navbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+            color: #31536d;
 
-    .language {
-      display: flex;
-      align-items: center;
-      gap: 5px;
+            font-size: 13px;
 
-      color: var(--muted);
+            outline: none;
 
-      font-size: 11px;
-      font-weight: 700;
+            cursor: pointer;
+        }
 
-      cursor: pointer;
-    }
+        /* ================= MAIN ================= */
 
-    .get-started {
-      display: flex;
-      align-items: center;
-      gap: 7px;
+        .hero {
+            min-height: calc(100vh - 78px);
 
-      padding: 11px 17px;
+            width: 100%;
 
-      border-radius: 10px;
+            display: grid;
 
-      background: var(--primary);
-      color: white;
+            grid-template-columns: 1fr 1fr;
 
-      font-size: 11px;
-      font-weight: 700;
+            align-items: center;
 
-      transition: 0.25s ease;
-    }
+            gap: 55px;
 
-    .get-started:hover {
-      background: #1d4ed8;
-      transform: translateY(-2px);
-    }
+            padding: 65px 8%;
+        }
 
-    /* MOBILE MENU */
+        /* ================= LEFT ================= */
 
-    .menu-button {
-      display: none;
+        .hero-content {
+            max-width: 590px;
+        }
 
-      border: none;
-      background: transparent;
+        .tag {
+            display: inline-flex;
 
-      font-size: 24px;
+            align-items: center;
 
-      color: var(--navy);
+            gap: 8px;
 
-      cursor: pointer;
-    }
+            padding: 8px 14px;
 
-    /* =========================================
-       HERO
-    ========================================= */
+            margin-bottom: 20px;
 
-    .hero {
-      max-width: 1250px;
+            border-radius: 30px;
 
-      min-height: 690px;
+            background: #d8f4ff;
 
-      margin: auto;
+            color: #087ca9;
 
-      padding: 80px 30px 100px;
+            font-size: 12px;
 
-      display: grid;
+            font-weight: 700;
 
-      grid-template-columns: 1fr 1fr;
+            letter-spacing: 0.4px;
+        }
 
-      gap: 65px;
+        .tag-dot {
+            width: 7px;
+            height: 7px;
 
-      align-items: center;
-    }
+            border-radius: 50%;
 
-    .hero-content {
-      max-width: 620px;
-    }
+            background: #00a6d9;
+        }
 
-    .hero-badge {
-      width: fit-content;
+        .hero-content h1 {
+            font-size: clamp(42px, 5vw, 68px);
 
-      display: flex;
-      align-items: center;
-      gap: 8px;
+            line-height: 1.05;
 
-      padding: 8px 14px;
+            color: #092b4a;
 
-      background: var(--light-blue);
+            margin-bottom: 20px;
 
-      border: 1px solid #dbeafe;
+            letter-spacing: -1.5px;
+        }
 
-      border-radius: 30px;
+        .hero-content h1 span {
+            color: #008fca;
+        }
 
-      color: var(--primary);
+        .hero-content p {
+            max-width: 510px;
 
-      font-size: 10px;
-      font-weight: 800;
+            color: #5d7588;
 
-      letter-spacing: 0.8px;
+            font-size: 16px;
 
-      margin-bottom: 24px;
-    }
+            line-height: 1.8;
 
-    .hero h1 {
-      color: var(--navy);
+            margin-bottom: 35px;
+        }
 
-      font-size: clamp(42px, 5vw, 65px);
+        /* ================= PORTAL CARDS ================= */
 
-      line-height: 1.08;
+        .portal-grid {
+            display: grid;
 
-      letter-spacing: -3px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
 
-      font-weight: 800;
-    }
+            gap: 17px;
 
-    .blue {
-      color: var(--primary);
-    }
+            max-width: 570px;
+        }
 
-    .hero-description {
-      max-width: 570px;
+        .portal-card {
+            min-height: 175px;
 
-      margin: 27px 0 30px;
+            padding: 23px;
 
-      color: var(--muted);
+            display: flex;
 
-      font-size: 15px;
+            flex-direction: column;
 
-      line-height: 1.8;
-    }
+            justify-content: space-between;
 
-    /* HERO BUTTONS */
+            text-decoration: none;
 
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
+            background: rgba(255,255,255,0.95);
 
-      flex-wrap: wrap;
-    }
+            border: 1px solid #d4e7ef;
 
-    .hero-button {
-      min-height: 49px;
+            border-radius: 20px;
 
-      padding: 0 20px;
+            box-shadow:
+                0 12px 35px rgba(23, 92, 130, 0.10);
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+            transition: 0.25s;
+        }
 
-      gap: 9px;
+        .portal-card:hover {
+            transform: translateY(-6px);
 
-      border-radius: 11px;
+            box-shadow:
+                0 18px 42px rgba(23, 92, 130, 0.17);
+        }
 
-      font-size: 12px;
-      font-weight: 700;
+        .doctor-card {
+            border-top: 4px solid #008fc7;
+        }
 
-      transition: 0.25s ease;
-    }
+        .patient-card {
+            border-top: 4px solid #586fe4;
+        }
 
-    .doctor-button {
-      background: var(--primary);
-      color: white;
+        .portal-icon {
+            width: 45px;
+            height: 45px;
 
-      box-shadow:
-        0 10px 25px rgba(37,99,235,0.2);
-    }
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    .doctor-button:hover {
-      background: #1d4ed8;
+            border-radius: 13px;
 
-      transform: translateY(-2px);
-    }
+            font-size: 21px;
 
-    .patient-button {
-      background: white;
+            margin-bottom: 15px;
+        }
 
-      color: var(--navy);
+        .doctor-icon {
+            background: #d9f5ff;
 
-      border: 1px solid var(--border);
-    }
+            color: #007ead;
+        }
 
-    .patient-button:hover {
-      border-color: #bfdbfe;
+        .patient-icon {
+            background: #e4e9ff;
 
-      color: var(--primary);
+            color: #4e63d3;
+        }
 
-      transform: translateY(-2px);
-    }
+        .portal-card h3 {
+            color: #173b57;
 
-    /* HERO TRUST */
+            font-size: 17px;
 
-    .hero-trust {
-      margin-top: 30px;
+            margin-bottom: 6px;
+        }
 
-      display: flex;
-      align-items: center;
+        .portal-card p {
+            color: #718696;
 
-      gap: 20px;
+            font-size: 12px;
 
-      flex-wrap: wrap;
-    }
+            line-height: 1.5;
 
-    .trust-item {
-      display: flex;
-      align-items: center;
+            margin: 0;
+        }
 
-      gap: 6px;
+        .portal-arrow {
+            align-self: flex-end;
 
-      color: #7890a5;
+            font-size: 18px;
 
-      font-size: 10px;
-      font-weight: 600;
-    }
+            color: #008fc7;
+        }
 
-    .trust-item span {
-      color: var(--primary);
-    }
+        /* ================= RIGHT VISUAL ================= */
 
-    /* =========================================
-       HERO DASHBOARD
-    ========================================= */
+        .visual-area {
+            min-height: 520px;
 
-    .hero-visual {
-      min-height: 500px;
+            display: flex;
 
-      position: relative;
+            align-items: center;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+            justify-content: center;
 
-    .dashboard {
-      width: min(500px, 100%);
+            position: relative;
+        }
 
-      background: white;
+        .medical-card {
+            width: min(470px, 100%);
 
-      border: 1px solid var(--border);
+            height: 450px;
 
-      border-radius: 23px;
+            border-radius: 38px;
 
-      overflow: hidden;
+            display: flex;
 
-      box-shadow:
-        0 30px 70px rgba(15,39,66,0.13);
+            align-items: center;
 
-      transform: rotate(1deg);
+            justify-content: center;
 
-      animation: dashboardFloat 5s ease-in-out infinite;
-    }
+            position: relative;
 
-    @keyframes dashboardFloat {
+            background:
+                linear-gradient(
+                    145deg,
+                    #c8f2ff,
+                    #ffffff 48%,
+                    #dce5ff
+                );
 
-      0%,100% {
-        transform: translateY(0) rotate(1deg);
-      }
+            border: 1px solid rgba(255,255,255,0.85);
 
-      50% {
-        transform: translateY(-8px) rotate(1deg);
-      }
+            box-shadow:
+                0 25px 65px rgba(25, 104, 155, 0.18);
+        }
 
-    }
+        /* ================= HEART ================= */
 
-    .dashboard-top {
-      height: 50px;
+        .heart {
+            width: 250px;
+            height: 250px;
 
-      padding: 0 18px;
+            position: relative;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+            display: flex;
 
-      border-bottom: 1px solid #edf2f7;
-    }
+            align-items: center;
 
-    .dots {
-      display: flex;
-      gap: 5px;
-    }
+            justify-content: center;
 
-    .dots span {
-      width: 6px;
-      height: 6px;
+            filter:
+                drop-shadow(
+                    0 18px 25px
+                    rgba(0, 105, 170, 0.25)
+                );
+        }
 
-      border-radius: 50%;
+        .heart-shape {
+            width: 190px;
+            height: 190px;
 
-      background: #cbd5e1;
-    }
+            transform: rotate(-45deg);
 
-    .dashboard-title {
-      color: var(--muted);
+            background:
+                linear-gradient(
+                    135deg,
+                    #13c5ed,
+                    #0079c8
+                );
 
-      font-size: 10px;
-      font-weight: 700;
-    }
+            border-radius: 28px;
 
-    .active {
-      display: flex;
-      align-items: center;
+            position: relative;
+        }
 
-      gap: 5px;
+        .heart-shape::before,
+        .heart-shape::after {
+            content: "";
 
-      color: #64748b;
+            width: 190px;
+            height: 190px;
 
-      font-size: 9px;
-    }
+            position: absolute;
 
-    .active span {
-      width: 6px;
-      height: 6px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #13c5ed,
+                    #0079c8
+                );
 
-      border-radius: 50%;
+            border-radius: 50%;
+        }
 
-      background: #22c55e;
-    }
+        .heart-shape::before {
+            top: -95px;
+            left: 0;
+        }
 
-    .dashboard-body {
-      padding: 25px;
-    }
+        .heart-shape::after {
+            top: 0;
+            left: 95px;
+        }
 
-    .patient-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+        /* ================= ECG ================= */
 
-    .small-label {
-      color: #94a3b8;
+        .ecg {
+            position: absolute;
 
-      font-size: 8px;
-      font-weight: 800;
+            width: 255px;
 
-      letter-spacing: 1px;
-    }
+            z-index: 5;
 
-    .patient-heading h3 {
-      margin-top: 5px;
+            filter:
+                drop-shadow(
+                    0 2px 3px
+                    rgba(0, 65, 110, 0.20)
+                );
+        }
 
-      color: var(--navy);
+        .ecg polyline {
+            fill: none;
 
-      font-size: 20px;
-    }
+            stroke: white;
 
-    .status {
-      padding: 6px 10px;
+            stroke-width: 7;
 
-      background: #ecfdf5;
+            stroke-linecap: round;
 
-      color: #059669;
+            stroke-linejoin: round;
+        }
 
-      border-radius: 20px;
+        /* ================= FLOATING INFO ================= */
 
-      font-size: 9px;
-      font-weight: 700;
-    }
+        .info-card {
+            position: absolute;
 
-    /* PATIENT ID */
+            top: 38px;
+            left: 0;
 
-    .patient-id {
-      margin-top: 20px;
+            min-width: 180px;
 
-      padding: 13px;
+            padding: 15px 18px;
 
-      display: flex;
-      align-items: center;
+            background: rgba(255,255,255,0.96);
 
-      gap: 10px;
+            border: 1px solid #d6e8f0;
 
-      background: #f8fafc;
+            border-radius: 15px;
 
-      border: 1px solid #edf2f7;
+            box-shadow:
+                0 15px 35px rgba(20, 90, 130, 0.13);
+        }
 
-      border-radius: 12px;
-    }
+        .info-card strong {
+            display: block;
 
-    .patient-icon {
-      width: 35px;
-      height: 35px;
+            color: #173b57;
 
-      border-radius: 9px;
+            font-size: 13px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+            margin-bottom: 4px;
+        }
 
-      background: var(--light-blue);
+        .info-card span {
+            color: #7890a0;
 
-      color: var(--primary);
+            font-size: 11px;
+        }
 
-      font-size: 17px;
-    }
+        /* ================= FOOTER ================= */
 
-    .patient-id span {
-      display: block;
+        .footer-text {
+            position: absolute;
 
-      color: #94a3b8;
+            bottom: 25px;
 
-      font-size: 8px;
-    }
+            left: 50%;
 
-    .patient-id strong {
-      display: block;
+            transform: translateX(-50%);
 
-      margin-top: 3px;
+            color: #7d93a2;
 
-      color: var(--navy);
+            font-size: 11px;
 
-      font-size: 11px;
-    }
+            text-align: center;
 
-    .qr-icon {
-      margin-left: auto;
+            white-space: nowrap;
+        }
 
-      font-size: 19px;
+        /* ================= RESPONSIVE ================= */
 
-      color: var(--primary);
-    }
+        @media (max-width: 900px) {
 
-    /* REPORT CARDS */
+            .hero {
+                grid-template-columns: 1fr;
 
-    .report-grid {
-      display: grid;
+                padding: 55px 7%;
 
-      grid-template-columns: 1fr 1fr;
+                text-align: center;
+            }
 
-      gap: 10px;
+            .hero-content {
+                max-width: 700px;
 
-      margin-top: 12px;
-    }
+                margin: auto;
+            }
 
-    .report-card {
-      padding: 13px;
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
 
-      display: flex;
-      align-items: center;
+            .portal-grid {
+                margin: auto;
 
-      gap: 9px;
+                text-align: left;
+            }
 
-      border: 1px solid #edf2f7;
+            .visual-area {
+                min-height: 430px;
+            }
 
-      border-radius: 12px;
-    }
+            .info-card {
+                left: 5%;
+            }
 
-    .report-card.current {
-      background: var(--light-blue);
+            .footer-text {
+                position: static;
 
-      border-color: #dbeafe;
-    }
+                transform: none;
 
-    .report-icon {
-      width: 31px;
-      height: 31px;
+                margin-top: 20px;
+            }
+        }
 
-      border-radius: 8px;
+        @media (max-width: 600px) {
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+            header {
+                padding: 0 20px;
+            }
 
-      background: white;
+            .brand {
+                font-size: 18px;
+            }
 
-      color: var(--primary);
+            .brand-logo {
+                width: 38px;
+                height: 38px;
+            }
 
-      font-size: 14px;
-    }
+            .hero {
+                padding: 45px 20px;
+            }
 
-    .report-card span {
-      display: block;
+            .hero-content h1 {
+                font-size: 42px;
+            }
 
-      color: #94a3b8;
+            .hero-content p {
+                font-size: 14px;
+            }
 
-      font-size: 8px;
-    }
+            .portal-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .report-card strong {
-      display: block;
+            .medical-card {
+                height: 350px;
 
-      margin-top: 3px;
+                border-radius: 28px;
+            }
 
-      color: var(--navy);
+            .heart-shape,
+            .heart-shape::before,
+            .heart-shape::after {
+                width: 145px;
+                height: 145px;
+            }
 
-      font-size: 10px;
-    }
+            .heart-shape::before {
+                top: -72px;
+            }
 
-    /* AI CARD */
+            .heart-shape::after {
+                left: 72px;
+            }
 
-    .ai-card {
-      margin-top: 12px;
+            .ecg {
+                width: 190px;
+            }
 
-      padding: 15px;
+            .info-card {
+                top: 10px;
+                left: 0;
+            }
+        }
 
-      border-radius: 14px;
+    </style>
 
-      background:
-        linear-gradient(
-          135deg,
-          #f8fbff,
-          #eff6ff
-        );
-
-      border: 1px solid #dbeafe;
-    }
-
-    .ai-header {
-      display: flex;
-      align-items: center;
-
-      gap: 9px;
-    }
-
-    .ai-icon {
-      width: 31px;
-      height: 31px;
-
-      border-radius: 8px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: white;
-
-      color: var(--primary);
-    }
-
-    .ai-title span {
-      display: block;
-
-      color: var(--primary);
-
-      font-size: 7px;
-      font-weight: 800;
-
-      letter-spacing: 0.8px;
-    }
-
-    .ai-title strong {
-      display: block;
-
-      margin-top: 2px;
-
-      color: var(--navy);
-
-      font-size: 10px;
-    }
-
-    .ai-dot {
-      width: 7px;
-      height: 7px;
-
-      margin-left: auto;
-
-      border-radius: 50%;
-
-      background: var(--secondary);
-    }
-
-    /* CHART */
-
-    .chart {
-      height: 75px;
-
-      margin: 12px 0;
-
-      position: relative;
-
-      overflow: hidden;
-
-      background:
-        repeating-linear-gradient(
-          to bottom,
-          transparent 0,
-          transparent 24px,
-          rgba(148,163,184,0.12) 25px
-        );
-    }
-
-    .chart-svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .chart-path {
-      fill: none;
-
-      stroke: var(--primary);
-
-      stroke-width: 3;
-
-      stroke-linecap: round;
-
-      stroke-linejoin: round;
-    }
-
-    .chart-fill {
-      fill: rgba(37,99,235,0.07);
-    }
-
-    .ai-result {
-      display: flex;
-      align-items: center;
-
-      justify-content: space-between;
-    }
-
-    .result-text {
-      display: flex;
-      align-items: baseline;
-
-      gap: 6px;
-    }
-
-    .result-text strong {
-      color: var(--primary);
-
-      font-size: 20px;
-    }
-
-    .result-text span {
-      color: var(--muted);
-
-      font-size: 8px;
-    }
-
-    .result-arrow {
-      color: var(--primary);
-
-      font-size: 18px;
-    }
-
-    /* FLOATING CARDS */
-
-    .floating-card {
-      position: absolute;
-
-      padding: 11px;
-
-      display: flex;
-      align-items: center;
-
-      gap: 9px;
-
-      background: white;
-
-      border: 1px solid var(--border);
-
-      border-radius: 13px;
-
-      box-shadow:
-        0 15px 35px rgba(15,39,66,0.1);
-    }
-
-    .floating-one {
-      left: -25px;
-      bottom: 65px;
-
-      animation: floating 4s ease-in-out infinite;
-    }
-
-    .floating-two {
-      right: -25px;
-      top: 90px;
-
-      animation: floating 5s ease-in-out infinite reverse;
-    }
-
-    @keyframes floating {
-
-      0%,100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-9px);
-      }
-
-    }
-
-    .floating-icon {
-      width: 34px;
-      height: 34px;
-
-      border-radius: 9px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: var(--light-blue);
-
-      color: var(--primary);
-
-      font-size: 17px;
-    }
-
-    .floating-card span {
-      display: block;
-
-      color: #94a3b8;
-
-      font-size: 8px;
-    }
-
-    .floating-card strong {
-      display: block;
-
-      margin-top: 2px;
-
-      color: var(--navy);
-
-      font-size: 10px;
-    }
-
-    .floating-check {
-      color: var(--success);
-
-      margin-left: 6px;
-    }
-
-    /* =========================================
-       SECTION COMMON
-    ========================================= */
-
-    section {
-      scroll-margin-top: 110px;
-    }
-
-    .section {
-      max-width: 1100px;
-
-      margin: auto;
-
-      padding: 100px 30px;
-    }
-
-    .section-heading {
-      max-width: 650px;
-
-      margin: 0 auto 50px;
-
-      text-align: center;
-    }
-
-    .section-label {
-      color: var(--primary);
-
-      font-size: 10px;
-      font-weight: 800;
-
-      letter-spacing: 1.3px;
-    }
-
-    .section-heading h2 {
-      margin: 12px 0 15px;
-
-      color: var(--navy);
-
-      font-size: clamp(32px,4vw,45px);
-
-      line-height: 1.15;
-
-      letter-spacing: -1.5px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-
-      font-size: 14px;
-
-      line-height: 1.7;
-    }
-
-    /* =========================================
-       ACCESS SECTION
-    ========================================= */
-
-    .access-grid {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 22px;
-    }
-
-    .access-card {
-      padding: 32px;
-
-      background: white;
-
-      border: 1px solid var(--border);
-
-      border-radius: 22px;
-
-      box-shadow:
-        0 12px 35px rgba(15,39,66,0.05);
-
-      transition: 0.3s ease;
-    }
-
-    .access-card:hover {
-      transform: translateY(-6px);
-
-      box-shadow:
-        0 20px 45px rgba(15,39,66,0.1);
-    }
-
-    .access-top {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-    }
-
-    .large-icon {
-      width: 58px;
-      height: 58px;
-
-      border-radius: 15px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 26px;
-    }
-
-    .doctor-icon {
-      background: var(--light-blue);
-
-      color: var(--primary);
-    }
-
-    .patient-large-icon {
-      background: var(--cyan-light);
-
-      color: var(--secondary);
-    }
-
-    .role-label {
-      color: #94a3b8;
-
-      font-size: 8px;
-      font-weight: 800;
-
-      letter-spacing: 0.8px;
-    }
-
-    .access-card h3 {
-      margin: 24px 0 10px;
-
-      color: var(--navy);
-
-      font-size: 23px;
-    }
-
-    .access-card > p {
-      min-height: 52px;
-
-      color: var(--muted);
-
-      font-size: 13px;
-
-      line-height: 1.7;
-    }
-
-    .access-card ul {
-      list-style: none;
-
-      padding: 0;
-
-      margin: 22px 0;
-
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 11px;
-    }
-
-    .access-card li {
-      color: #52657a;
-
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    .access-card li::before {
-      content: "✓";
-
-      color: var(--success);
-
-      margin-right: 7px;
-
-      font-weight: 800;
-    }
-
-    .access-button {
-      width: 100%;
-
-      min-height: 46px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 8px;
-
-      border-radius: 10px;
-
-      font-size: 12px;
-      font-weight: 700;
-
-      transition: 0.25s ease;
-    }
-
-    .access-doctor-button {
-      background: var(--primary);
-
-      color: white;
-    }
-
-    .access-doctor-button:hover {
-      background: #1d4ed8;
-    }
-
-    .access-patient-button {
-      color: var(--primary);
-
-      background: white;
-
-      border: 1px solid #bfdbfe;
-    }
-
-    .access-patient-button:hover {
-      background: var(--light-blue);
-    }
-
-    /* =========================================
-       FEATURES
-    ========================================= */
-
-    .features-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 16px;
-    }
-
-    .feature-card {
-      min-height: 245px;
-
-      padding: 23px;
-
-      position: relative;
-
-      background: white;
-
-      border: 1px solid var(--border);
-
-      border-radius: 18px;
-
-      transition: 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-
-      border-color: #bfdbfe;
-
-      box-shadow:
-        0 18px 40px rgba(15,39,66,0.07);
-    }
-
-    .feature-top {
-      display: flex;
-
-      justify-content: space-between;
-    }
-
-    .feature-icon {
-      width: 43px;
-      height: 43px;
-
-      border-radius: 11px;
-
-      background: var(--light-blue);
-
-      color: var(--primary);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 20px;
-    }
-
-    .feature-number {
-      color: #cbd5e1;
-
-      font-size: 10px;
-
-      font-weight: 800;
-    }
-
-    .feature-card h3 {
-      margin: 28px 0 9px;
-
-      color: var(--navy);
-
-      font-size: 16px;
-    }
-
-    .feature-card p {
-      color: var(--muted);
-
-      font-size: 11px;
-
-      line-height: 1.7;
-    }
-
-    .feature-arrow {
-      position: absolute;
-
-      right: 21px;
-
-      bottom: 21px;
-
-      color: var(--primary);
-
-      font-size: 17px;
-    }
-
-    /* =========================================
-       HOW IT WORKS
-    ========================================= */
-
-    .workflow {
-      display: flex;
-
-      align-items: flex-start;
-
-      justify-content: center;
-    }
-
-    .workflow-step {
-      width: 220px;
-
-      text-align: center;
-    }
-
-    .workflow-number {
-      color: #bfdbfe;
-
-      font-size: 10px;
-
-      font-weight: 800;
-
-      margin-bottom: 10px;
-    }
-
-    .workflow-icon {
-      width: 54px;
-      height: 54px;
-
-      margin: auto;
-
-      border-radius: 50%;
-
-      background: var(--light-blue);
-
-      color: var(--primary);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 22px;
-
-      border: 5px solid white;
-
-      box-shadow:
-        0 0 0 1px #dbeafe;
-    }
-
-    .workflow-step h3 {
-      margin: 17px 0 7px;
-
-      color: var(--navy);
-
-      font-size: 14px;
-    }
-
-    .workflow-step p {
-      color: var(--muted);
-
-      font-size: 10px;
-
-      line-height: 1.6;
-    }
-
-    .workflow-line {
-      width: 65px;
-
-      height: 1px;
-
-      margin-top: 77px;
-
-      background: #bfdbfe;
-    }
-
-    /* =========================================
-       SECURITY
-    ========================================= */
-
-    .security {
-      max-width: 1100px;
-
-      margin: 50px auto 100px;
-
-      padding: 55px;
-
-      background: #eff6ff;
-
-      border: 1px solid #dbeafe;
-
-      border-radius: 28px;
-    }
-
-    .security-content {
-      display: grid;
-
-      grid-template-columns:
-        0.9fr 1.1fr;
-
-      gap: 55px;
-
-      align-items: center;
-    }
-
-    .security h2 {
-      margin: 14px 0;
-
-      color: var(--navy);
-
-      font-size: 34px;
-
-      line-height: 1.2;
-    }
-
-    .security h2 span {
-      color: var(--primary);
-    }
-
-    .security-description {
-      color: var(--muted);
-
-      font-size: 13px;
-
-      line-height: 1.8;
-    }
-
-    .security-grid {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 14px;
-    }
-
-    .security-item {
-      padding: 18px;
-
-      display: flex;
-
-      gap: 12px;
-
-      background: white;
-
-      border: 1px solid #dbeafe;
-
-      border-radius: 14px;
-    }
-
-    .security-icon {
-      width: 38px;
-      height: 38px;
-
-      flex-shrink: 0;
-
-      border-radius: 10px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: var(--light-blue);
-
-      color: var(--primary);
-
-      font-size: 18px;
-    }
-
-    .security-item h3 {
-      margin: 1px 0 5px;
-
-      color: var(--navy);
-
-      font-size: 12px;
-    }
-
-    .security-item p {
-      color: var(--muted);
-
-      font-size: 9px;
-
-      line-height: 1.6;
-    }
-
-    .disclaimer {
-      margin-top: 35px;
-
-      padding: 15px 17px;
-
-      display: flex;
-
-      align-items: flex-start;
-
-      gap: 10px;
-
-      background: rgba(255,255,255,0.7);
-
-      border: 1px solid #dbeafe;
-
-      border-radius: 12px;
-
-      color: #55708b;
-    }
-
-    .disclaimer-icon {
-      color: var(--primary);
-
-      font-size: 18px;
-    }
-
-    .disclaimer p {
-      font-size: 10px;
-
-      line-height: 1.7;
-    }
-
-    /* =========================================
-       FOOTER
-    ========================================= */
-
-    footer {
-      padding: 45px 7% 25px;
-
-      background: white;
-
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-main {
-      max-width: 1100px;
-
-      margin: auto;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-    }
-
-    .footer-logo {
-      display: flex;
-
-      align-items: center;
-
-      gap: 9px;
-
-      color: var(--navy);
-
-      font-size: 16px;
-      font-weight: 800;
-    }
-
-    .footer-logo-icon {
-      width: 33px;
-      height: 33px;
-
-      border-radius: 9px;
-
-      background: var(--light-blue);
-
-      color: var(--primary);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 17px;
-    }
-
-    .footer-tagline {
-      color: var(--muted);
-
-      font-size: 10px;
-
-      margin-top: 8px;
-    }
-
-    .footer-links {
-      display: flex;
-
-      gap: 25px;
-    }
-
-    .footer-links a {
-      color: var(--muted);
-
-      font-size: 10px;
-    }
-
-    .footer-links a:hover {
-      color: var(--primary);
-    }
-
-    .footer-bottom {
-      max-width: 1100px;
-
-      margin: 28px auto 0;
-
-      padding-top: 20px;
-
-      border-top: 1px solid #edf2f7;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      color: #94a3b8;
-
-      font-size: 9px;
-    }
-
-    /* =========================================
-       SCROLL ANIMATION
-    ========================================= */
-
-    .reveal {
-      opacity: 0;
-
-      transform: translateY(25px);
-
-      transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
-    }
-
-    .reveal.show {
-      opacity: 1;
-
-      transform: translateY(0);
-    }
-
-    /* =========================================
-       MOBILE
-    ========================================= */
-
-    @media (max-width: 950px) {
-
-      .hero {
-        grid-template-columns: 1fr;
-
-        text-align: center;
-
-        padding-top: 60px;
-      }
-
-      .hero-content {
-        margin: auto;
-      }
-
-      .hero-badge {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-description {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-trust {
-        justify-content: center;
-      }
-
-      .hero-visual {
-        max-width: 600px;
-
-        width: 100%;
-
-        margin: auto;
-      }
-
-      .features-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .workflow {
-        flex-wrap: wrap;
-
-        gap: 30px;
-      }
-
-      .workflow-line {
-        display: none;
-      }
-
-      .security-content {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-    @media (max-width: 700px) {
-
-      .navbar-wrapper {
-        padding: 10px 12px;
-      }
-
-      .navbar {
-        min-height: 62px;
-      }
-
-      .brand-tagline {
-        display: none;
-      }
-
-      .nav-links {
-        position: absolute;
-
-        top: 75px;
-
-        left: 12px;
-        right: 12px;
-
-        display: none;
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 0;
-
-        padding: 10px;
-
-        background: white;
-
-        border: 1px solid var(--border);
-
-        border-radius: 15px;
-
-        box-shadow:
-          0 15px 35px rgba(15,39,66,0.1);
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        padding: 13px;
-      }
-
-      .language,
-      .get-started {
-        display: none;
-      }
-
-      .menu-button {
-        display: block;
-      }
-
-      .hero {
-        padding: 55px 20px 75px;
-
-        min-height: auto;
-
-        gap: 55px;
-      }
-
-      .hero h1 {
-        font-size: 39px;
-
-        letter-spacing: -1.8px;
-      }
-
-      .hero-description {
-        font-size: 14px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-      }
-
-      .hero-button {
-        width: 100%;
-      }
-
-      .hero-trust {
-        gap: 12px;
-      }
-
-      .hero-visual {
-        min-height: 430px;
-      }
-
-      .dashboard {
-        width: 100%;
-      }
-
-      .floating-one {
-        left: -5px;
-        bottom: 20px;
-      }
-
-      .floating-two {
-        right: -5px;
-        top: 20px;
-      }
-
-      .section {
-        padding: 70px 20px;
-      }
-
-      .access-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .access-card ul {
-        grid-template-columns: 1fr;
-      }
-
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .workflow {
-        flex-direction: column;
-
-        align-items: center;
-      }
-
-      .security {
-        margin: 30px 15px 70px;
-
-        padding: 30px 20px;
-
-        border-radius: 22px;
-      }
-
-      .security-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .security h2 {
-        font-size: 28px;
-      }
-
-      .footer-main {
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        gap: 25px;
-      }
-
-      .footer-links {
-        flex-wrap: wrap;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-
-        gap: 8px;
-      }
-
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-
-        transition: none !important;
-      }
-
-      .reveal {
-        opacity: 1;
-
-        transform: none;
-      }
-
-    }
-
-  </style>
 </head>
 
 
 <body>
 
-<div class="page">
 
-  <!-- =========================================
-       NAVBAR
-  ========================================== -->
+<!-- ================= HEADER ================= -->
 
-  <div class="navbar-wrapper">
+<header>
 
-    <nav class="navbar">
+    <div class="brand">
 
-      <a href="#home" class="brand">
+        <div class="brand-logo">
 
-        <div class="brand-icon">
-          🔗
-        </div>
-
-        <div>
-          <div class="brand-name">
-            LIFELINK
-          </div>
-
-          <div class="brand-tagline">
-            Connected Care. Better Decisions.
-          </div>
-        </div>
-
-      </a>
-
-
-      <div class="nav-links" id="navLinks">
-
-        <a href="#home">
-          Home
-        </a>
-
-        <a href="#features">
-          Features
-        </a>
-
-        <a href="#how-it-works">
-          How It Works
-        </a>
-
-        <a href="#security">
-          Security
-        </a>
-
-      </div>
-
-
-      <div class="navbar-actions">
-
-        <div class="language">
-          EN ▾
-        </div>
-
-        <a
-          href="/login?role=doctor"
-          class="get-started"
-        >
-          Get Started →
-        </a>
-
-        <button
-          class="menu-button"
-          onclick="toggleMenu()"
-        >
-          ☰
-        </button>
-
-      </div>
-
-    </nav>
-
-  </div>
-
-
-  <!-- =========================================
-       HERO
-  ========================================== -->
-
-  <section class="hero" id="home">
-
-    <div class="hero-content reveal">
-
-      <div class="hero-badge">
-        ✦
-        AI-ASSISTED HEALTHCARE PLATFORM
-      </div>
-
-
-      <h1>
-
-        Connected Healthcare,
-        <br>
-
-        Built Around
-        <span class="blue">
-          Every Patient
-        </span>
-
-      </h1>
-
-
-      <p class="hero-description">
-
-        LIFELINK helps healthcare professionals securely
-        manage patient records, compare medical reports
-        and understand meaningful changes with
-        AI-assisted clinical review.
-
-      </p>
-
-
-      <div class="hero-buttons">
-
-        <a
-          href="/login?role=doctor"
-          class="hero-button doctor-button"
-        >
-          🩺
-          Doctor Login
-          →
-        </a>
-
-
-        <a
-          href="/login?role=patient"
-          class="hero-button patient-button"
-        >
-          👤
-          Patient Login
-        </a>
-
-      </div>
-
-
-      <div class="hero-trust">
-
-        <div class="trust-item">
-          <span>✓</span>
-          Secure Access
-        </div>
-
-        <div class="trust-item">
-          <span>✓</span>
-          Privacy Focused
-        </div>
-
-        <div class="trust-item">
-          <span>✓</span>
-          AI Assisted
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- HERO DASHBOARD -->
-
-    <div class="hero-visual reveal">
-
-      <div class="dashboard">
-
-        <div class="dashboard-top">
-
-          <div class="dots">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <span class="dashboard-title">
-            LIFELINK Dashboard
-          </span>
-
-          <div class="active">
-            <span></span>
-            Active
-          </div>
-
-        </div>
-
-
-        <div class="dashboard-body">
-
-          <div class="patient-heading">
-
-            <div>
-
-              <span class="small-label">
-                PATIENT PROFILE
-              </span>
-
-              <h3>
-                Arun Kumar
-              </h3>
-
-            </div>
-
-            <div class="status">
-              Active
-            </div>
-
-          </div>
-
-
-          <!-- PATIENT ID -->
-
-          <div class="patient-id">
-
-            <div class="patient-icon">
-              👤
-            </div>
-
-            <div>
-
-              <span>
-                Patient ID
-              </span>
-
-              <strong>
-                GOV-CHN-102845
-              </strong>
-
-            </div>
-
-            <div class="qr-icon">
-              ▦
-            </div>
-
-          </div>
-
-
-          <!-- REPORTS -->
-
-          <div class="report-grid">
-
-            <div class="report-card">
-
-              <div class="report-icon">
-                📄
-              </div>
-
-              <div>
-
-                <span>
-                  Previous Report
-                </span>
-
-                <strong>
-                  Jan 2026
-                </strong>
-
-              </div>
-
-            </div>
-
-
-            <div class="report-card current">
-
-              <div class="report-icon">
-                📄
-              </div>
-
-              <div>
-
-                <span>
-                  Current Report
-                </span>
-
-                <strong>
-                  Oct 2026
-                </strong>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <!-- AI -->
-
-          <div class="ai-card">
-
-            <div class="ai-header">
-
-              <div class="ai-icon">
-                ✦
-              </div>
-
-              <div class="ai-title">
-
-                <span>
-                  AI CLINICAL REVIEW
-                </span>
-
-                <strong>
-                  Report comparison
-                </strong>
-
-              </div>
-
-              <div class="ai-dot"></div>
-
-            </div>
-
-
-            <div class="chart">
-
-              <svg
-                class="chart-svg"
-                viewBox="0 0 400 100"
-                preserveAspectRatio="none"
-              >
+            <svg viewBox="0 0 60 60">
 
                 <path
-                  class="chart-fill"
-                  d="
-                    M0,70
-                    L60,55
-                    L120,65
-                    L180,35
-                    L240,48
-                    L300,25
-                    L350,38
-                    L400,15
-                    L400,100
-                    L0,100
-                    Z
-                  "
+                    d="M30 50
+                       C26 46 10 37 10 22
+                       C10 13 16 8 23 8
+                       C27 8 30 11 30 15
+                       C30 11 33 8 37 8
+                       C44 8 50 13 50 22
+                       C50 37 34 46 30 50Z"
+
+                    fill="none"
+
+                    stroke="white"
+
+                    stroke-width="3.5"
                 />
 
-                <path
-                  class="chart-path"
-                  d="
-                    M0,70
-                    L60,55
-                    L120,65
-                    L180,35
-                    L240,48
-                    L300,25
-                    L350,38
-                    L400,15
-                  "
+                <polyline
+                    points="
+                    12,27
+                    21,27
+                    25,22
+                    29,35
+                    34,16
+                    38,27
+                    48,27"
+
+                    fill="none"
+
+                    stroke="#66e2ff"
+
+                    stroke-width="3"
+
+                    stroke-linecap="round"
+
+                    stroke-linejoin="round"
                 />
 
-              </svg>
+            </svg>
 
-            </div>
+        </div>
 
 
-            <div class="ai-result">
+        LIFE <span>LINK</span>
 
-              <div class="result-text">
+    </div>
+
+
+    <select
+        class="language"
+        id="language"
+        onchange="changeLanguage()"
+    >
+
+        <option value="en">
+            English
+        </option>
+
+        <option value="ta">
+            தமிழ்
+        </option>
+
+    </select>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<main class="hero">
+
+
+    <!-- ================= LEFT ================= -->
+
+    <section class="hero-content">
+
+
+        <div class="tag">
+
+            <span class="tag-dot"></span>
+
+            Connected Healthcare Experience
+
+        </div>
+
+
+        <h1>
+
+            Better Context.<br>
+
+            <span>Better Care.</span>
+
+        </h1>
+
+
+        <p>
+
+            LIFE LINK brings medical information together
+            so doctors can understand patient history,
+            reports and changes with greater clarity.
+
+        </p>
+
+
+        <!-- PORTALS -->
+
+        <div class="portal-grid">
+
+
+            <!-- DOCTOR -->
+
+            <a
+                href="doctor-login.html"
+                class="portal-card doctor-card"
+            >
+
+                <div>
+
+                    <div class="portal-icon doctor-icon">
+                        🩺
+                    </div>
+
+                    <h3>
+                        Doctor Portal
+                    </h3>
+
+                    <p>
+                        Review patient information,
+                        reports and clinical context.
+                    </p>
+
+                </div>
+
+
+                <div class="portal-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+
+            <!-- PATIENT -->
+
+            <a
+                href="patient-login.html"
+                class="portal-card patient-card"
+            >
+
+                <div>
+
+                    <div class="portal-icon patient-icon">
+                        ♥
+                    </div>
+
+                    <h3>
+                        Patient Portal
+                    </h3>
+
+                    <p>
+                        Manage your health information
+                        and medical reports.
+                    </p>
+
+                </div>
+
+
+                <div class="portal-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= RIGHT VISUAL ================= -->
+
+    <section class="visual-area">
+
+
+        <div class="medical-card">
+
+
+            <!-- TOP INFORMATION CARD -->
+
+            <div class="info-card">
 
                 <strong>
-                  3
+                    Medical Reports
                 </strong>
 
                 <span>
-                  meaningful changes identified
+                    Organized & connected
                 </span>
-
-              </div>
-
-              <div class="result-arrow">
-                →
-              </div>
 
             </div>
 
-          </div>
 
-        </div>
+            <!-- HEART -->
 
-      </div>
+            <div class="heart">
 
-
-      <!-- FLOATING CARD 1 -->
-
-      <div class="floating-card floating-one">
-
-        <div class="floating-icon">
-          ♥
-        </div>
-
-        <div>
-
-          <span>
-            Medical History
-          </span>
-
-          <strong>
-            Updated
-          </strong>
-
-        </div>
-
-        <div class="floating-check">
-          ✓
-        </div>
-
-      </div>
+                <div class="heart-shape"></div>
 
 
-      <!-- FLOATING CARD 2 -->
+                <svg
+                    class="ecg"
+                    viewBox="0 0 300 100"
+                >
 
-      <div class="floating-card floating-two">
+                    <polyline
+                        points="
+                        0,55
+                        55,55
+                        75,55
+                        92,38
+                        108,70
+                        132,12
+                        155,55
+                        190,55
+                        208,55
+                        225,40
+                        240,70
+                        258,55
+                        300,55
+                        "
+                    />
 
-        <div class="floating-icon">
-          🔒
-        </div>
+                </svg>
 
-        <div>
+            </div>
 
-          <span>
-            Patient Access
-          </span>
-
-          <strong>
-            Protected
-          </strong>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================
-       ACCESS
-  ========================================== -->
-
-  <section class="section reveal" id="access">
-
-    <div class="section-heading">
-
-      <span class="section-label">
-        ACCESS LIFELINK
-      </span>
-
-      <h2>
-        Choose Your
-        <span class="blue">
-          Access
-        </span>
-      </h2>
-
-      <p>
-        Access LIFELINK based on your role and
-        securely manage healthcare information.
-      </p>
-
-    </div>
-
-
-    <div class="access-grid">
-
-
-      <!-- DOCTOR -->
-
-      <div class="access-card">
-
-        <div class="access-top">
-
-          <div class="large-icon doctor-icon">
-            🩺
-          </div>
-
-          <span class="role-label">
-            FOR HEALTHCARE PROFESSIONALS
-          </span>
 
         </div>
 
 
-        <h3>
-          Doctor Portal
-        </h3>
+    </section>
 
 
-        <p>
-          Securely access patient records, compare
-          reports and use AI-assisted clinical
-          review tools.
-        </p>
+</main>
 
 
-        <ul>
 
-          <li>
-            Patient search
-          </li>
+<div class="footer-text">
 
-          <li>
-            Medical history
-          </li>
-
-          <li>
-            Report comparison
-          </li>
-
-          <li>
-            AI clinical review
-          </li>
-
-        </ul>
-
-
-        <a
-          href="/login?role=doctor"
-          class="access-button access-doctor-button"
-        >
-          Login as Doctor →
-        </a>
-
-      </div>
-
-
-      <!-- PATIENT -->
-
-      <div class="access-card">
-
-        <div class="access-top">
-
-          <div class="large-icon patient-large-icon">
-            👤
-          </div>
-
-          <span class="role-label">
-            FOR PATIENTS
-          </span>
-
-        </div>
-
-
-        <h3>
-          Patient Portal
-        </h3>
-
-
-        <p>
-          Access your personal health records,
-          reports and patient information securely
-          from one place.
-        </p>
-
-
-        <ul>
-
-          <li>
-            Personal health records
-          </li>
-
-          <li>
-            Medical reports
-          </li>
-
-          <li>
-            Patient history
-          </li>
-
-          <li>
-            Secure access
-          </li>
-
-        </ul>
-
-
-        <a
-          href="/login?role=patient"
-          class="access-button access-patient-button"
-        >
-          Login as Patient →
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================
-       FEATURES
-  ========================================== -->
-
-  <section
-    class="section reveal"
-    id="features"
-  >
-
-    <div class="section-heading">
-
-      <span class="section-label">
-        CORE FEATURES
-      </span>
-
-      <h2>
-
-        Everything Connected
-        <br>
-
-        <span class="blue">
-          in One Place
-        </span>
-
-      </h2>
-
-      <p>
-        LIFELINK brings essential patient information
-        and intelligent clinical review tools together
-        in one secure platform.
-      </p>
-
-    </div>
-
-
-    <div class="features-grid">
-
-
-      <div class="feature-card">
-
-        <div class="feature-top">
-
-          <div class="feature-icon">
-            👤
-          </div>
-
-          <span class="feature-number">
-            01
-          </span>
-
-        </div>
-
-        <h3>
-          Patient ID
-        </h3>
-
-        <p>
-          Every patient receives a permanent unique
-          Patient ID for secure record management.
-        </p>
-
-        <div class="feature-arrow">
-          →
-        </div>
-
-      </div>
-
-
-      <div class="feature-card">
-
-        <div class="feature-top">
-
-          <div class="feature-icon">
-            📄
-          </div>
-
-          <span class="feature-number">
-            02
-          </span>
-
-        </div>
-
-        <h3>
-          Medical Reports
-        </h3>
-
-        <p>
-          Upload and organize medical reports in
-          one secure patient history.
-        </p>
-
-        <div class="feature-arrow">
-          →
-        </div>
-
-      </div>
-
-
-      <div class="feature-card">
-
-        <div class="feature-top">
-
-          <div class="feature-icon">
-            📊
-          </div>
-
-          <span class="feature-number">
-            03
-          </span>
-
-        </div>
-
-        <h3>
-          Report Comparison
-        </h3>
-
-        <p>
-          Compare previous and current reports
-          to clearly identify meaningful changes.
-        </p>
-
-        <div class="feature-arrow">
-          →
-        </div>
-
-      </div>
-
-
-      <div class="feature-card">
-
-        <div class="feature-top">
-
-          <div class="feature-icon">
-            ✦
-          </div>
-
-          <span class="feature-number">
-            04
-          </span>
-
-        </div>
-
-        <h3>
-          AI Clinical Review
-        </h3>
-
-        <p>
-          AI helps doctors understand report changes
-          and identify information that may need review.
-        </p>
-
-        <div class="feature-arrow">
-          →
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================
-       HOW IT WORKS
-  ========================================== -->
-
-  <section
-    class="section reveal"
-    id="how-it-works"
-  >
-
-    <div class="section-heading">
-
-      <span class="section-label">
-        SIMPLE WORKFLOW
-      </span>
-
-      <h2>
-        How
-        <span class="blue">
-          LIFELINK
-        </span>
-        Works
-      </h2>
-
-      <p>
-        A connected workflow designed to make
-        patient information easier to manage and review.
-      </p>
-
-    </div>
-
-
-    <div class="workflow">
-
-
-      <div class="workflow-step">
-
-        <div class="workflow-number">
-          01
-        </div>
-
-        <div class="workflow-icon">
-          👤
-        </div>
-
-        <h3>
-          Create Patient ID
-        </h3>
-
-        <p>
-          Every patient receives a permanent
-          identity within the system.
-        </p>
-
-      </div>
-
-
-      <div class="workflow-line"></div>
-
-
-      <div class="workflow-step">
-
-        <div class="workflow-number">
-          02
-        </div>
-
-        <div class="workflow-icon">
-          📄
-        </div>
-
-        <h3>
-          Store Reports
-        </h3>
-
-        <p>
-          Medical reports are securely associated
-          with the patient's record.
-        </p>
-
-      </div>
-
-
-      <div class="workflow-line"></div>
-
-
-      <div class="workflow-step">
-
-        <div class="workflow-number">
-          03
-        </div>
-
-        <div class="workflow-icon">
-          📊
-        </div>
-
-        <h3>
-          Compare Reports
-        </h3>
-
-        <p>
-          Doctors can compare previous and
-          current reports.
-        </p>
-
-      </div>
-
-
-      <div class="workflow-line"></div>
-
-
-      <div class="workflow-step">
-
-        <div class="workflow-number">
-          04
-        </div>
-
-        <div class="workflow-icon">
-          ✦
-        </div>
-
-        <h3>
-          AI Clinical Review
-        </h3>
-
-        <p>
-          AI explains observed changes and
-          provides review points.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================
-       SECURITY
-  ========================================== -->
-
-  <section
-    class="security reveal"
-    id="security"
-  >
-
-    <div class="security-content">
-
-      <div>
-
-        <span class="section-label">
-          PRIVACY & SECURITY
-        </span>
-
-        <h2>
-          Designed with Patient
-          <span>
-            Privacy in Mind
-          </span>
-        </h2>
-
-        <p class="security-description">
-
-          LIFELINK is designed around controlled
-          access, protected records and responsible
-          AI-assisted healthcare workflows.
-
-        </p>
-
-      </div>
-
-
-      <div class="security-grid">
-
-
-        <div class="security-item">
-
-          <div class="security-icon">
-            🔒
-          </div>
-
-          <div>
-
-            <h3>
-              Secure Authentication
-            </h3>
-
-            <p>
-              Patient and doctor access
-              are separated.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="security-item">
-
-          <div class="security-icon">
-            🛡
-          </div>
-
-          <div>
-
-            <h3>
-              Controlled Access
-            </h3>
-
-            <p>
-              Users can only access information
-              they are authorized to see.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="security-item">
-
-          <div class="security-icon">
-            📄
-          </div>
-
-          <div>
-
-            <h3>
-              Protected Reports
-            </h3>
-
-            <p>
-              Medical reports are stored
-              with controlled access.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="security-item">
-
-          <div class="security-icon">
-            ✦
-          </div>
-
-          <div>
-
-            <h3>
-              Responsible AI
-            </h3>
-
-            <p>
-              AI provides clinical review
-              support, not diagnosis.
-            </p>
-
-          </div>
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-
-    <div class="disclaimer">
-
-      <div class="disclaimer-icon">
-        ⓘ
-      </div>
-
-      <p>
-
-        LIFELINK is a healthcare technology prototype.
-        AI-generated information is intended only to
-        support qualified healthcare professionals and
-        does not replace professional medical judgment.
-
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================
-       FOOTER
-  ========================================== -->
-
-  <footer>
-
-    <div class="footer-main">
-
-      <div>
-
-        <div class="footer-logo">
-
-          <div class="footer-logo-icon">
-            🔗
-          </div>
-
-          LIFELINK
-
-        </div>
-
-        <div class="footer-tagline">
-          Connected Care. Better Decisions.
-        </div>
-
-      </div>
-
-
-      <div class="footer-links">
-
-        <a href="#home">
-          Home
-        </a>
-
-        <a href="#features">
-          Features
-        </a>
-
-        <a href="#how-it-works">
-          How It Works
-        </a>
-
-        <a href="#security">
-          Security
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-      <span>
-        LIFELINK © 2026
-      </span>
-
-      <span>
-        AI-assisted healthcare technology
-      </span>
-
-    </div>
-
-  </footer>
+    LIFE LINK • Better Context. Better Care.
 
 </div>
 
 
+
 <script>
 
-  /* =========================================
-     MOBILE MENU
-  ========================================== */
+function changeLanguage() {
 
-  function toggleMenu() {
-
-    const nav = document.getElementById("navLinks");
-
-    nav.classList.toggle("open");
-
-  }
+    const language =
+        document.getElementById("language").value;
 
 
-  /* =========================================
-     SCROLL REVEAL
-  ========================================== */
+    if (language === "ta") {
 
-  const revealElements =
-    document.querySelectorAll(".reveal");
+        alert(
+            "தமிழ் மொழி ஆதரவு விரைவில் சேர்க்கப்படும்."
+        );
 
+        document.getElementById("language").value = "en";
+    }
 
-  const observer =
-    new IntersectionObserver(
-      (entries) => {
-
-        entries.forEach((entry) => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("show");
-
-            observer.unobserve(entry.target);
-
-          }
-
-        });
-
-      },
-      {
-        threshold: 0.12
-      }
-    );
-
-
-  revealElements.forEach((element) => {
-
-    observer.observe(element);
-
-  });
-
-
-  /* =========================================
-     CLOSE MOBILE MENU AFTER CLICK
-  ========================================== */
-
-  document
-    .querySelectorAll(".nav-links a")
-    .forEach((link) => {
-
-      link.addEventListener("click", () => {
-
-        document
-          .getElementById("navLinks")
-          .classList.remove("open");
-
-      });
-
-    });
+}
 
 </script>
 
+
 </body>
+
 </html>
-```
