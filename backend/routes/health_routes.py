@@ -1,4 +1,20 @@
 from fastapi import APIRouter
-router=APIRouter(prefix="/health",tags=["Health"])
+
+
+router = APIRouter(
+    prefix="/health",
+    tags=["Health"]
+)
+
+
 @router.get("")
-def health(): return {"status":"ok","service":"Clinical Context AI Backend"}
+def health():
+
+    return {
+
+        "status":
+            "ok",
+
+        "service":
+            "LIFE LINK Backend"
+    }
